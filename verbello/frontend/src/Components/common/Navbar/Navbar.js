@@ -1,12 +1,14 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import './Navbar.css';
+import verbelloLogo from '../../../assets/images/verbello-logo.jpeg';
 
 const Navbar = () => {
   return (
     <nav className="navbar sticky-top navbar-expand-lg navbar-bgcolor">
       <div className="container-fluid">
         <Link to="/" className="navbar-logo">
-          <img src="assets/images/verbello-logo.jpeg" className="img-fluid" alt="Verbello" />
+          <img src={verbelloLogo} className="img-fluid" alt="Verbello" />
         </Link>
         <div
           className="collapse navbar-collapse justify-content-end"
