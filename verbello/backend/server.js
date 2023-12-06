@@ -20,7 +20,7 @@ app.use(express.json());
 app.use(session({
   secret: '1965', // Change this to a secure secret key
   resave: false,
-  saveUninitialized: true,
+  saveUninitialized: false,
   store: MongoStore.create({
     mongoUrl: 'mongodb://localhost:27017/Final_Project',
 
@@ -29,15 +29,16 @@ app.use(session({
 }));
 
 // Custom middleware to check if the user is authenticated
-const authenticateUser = (req, res, next) => {
-  if (req.session && req.session.user) {
-    // User is authenticated
-    next();
-  } else {
-    // User is not authenticated
-    res.status(401).json({ error: 'Unauthorized' });
-  }
-};
+// const authenticateUser = (req, res, next) => {
+//   if (req.session && req.session.user) {
+//     // User is authenticated
+//     next();
+//   } else {
+//     // User is not authenticated
+//     res.status(401).json({ error: 'Unauthorized' });
+//   }
+// };
+
 
 
 // Use the user router

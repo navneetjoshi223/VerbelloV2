@@ -10,6 +10,7 @@ async function loginUser(req, res) {
     }
 
     const user = await userService.authenticateLogin(email, password);
+    console.log(user,'USERRR')
     req.session.user = { _id: user._id, username: user.fullName };
 
     res.json({ message: 'Login successful', user });
@@ -20,20 +21,21 @@ async function loginUser(req, res) {
 }
 
 async function signupUser(req, res) {
-    const {fullname, email, password } = req.body;
-    console.log(fullname,email,password,'CRED')
+    const {fullName, email, password } = req.body;
+    console.log(fullName,email,password,'CRED')
   
     try {
-      if (!fullname || !email || !password) {
+      if (!fullName || !email || !password) {
         return res.status(400).json({ message: 'All fields are mandatory!' });
       }
   
-      const user = await userService.authenticateSignup(fullname,email, password);
+      const user = await userService.authenticateSignup(fullName,email, password);
+      
   
-      res.json({ message: 'Signup successful', user });
+      res.json({ status:200,message: 'Signup successful'});
     } catch (error) {
       console.error(error.message,"IIIII");
-      res.status(401).json({ message: error.message });
+      res.json({status:401, message: error.message });
     }
   }
 
