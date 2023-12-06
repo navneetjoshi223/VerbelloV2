@@ -2,7 +2,7 @@
   position: relative;
   width: 90%;
   /* max-width: 800px;  Adjust the maximum width */
-  margin: 0 auto;
+  margin: 1.25em auto;
   overflow: hidden;
   background-color: #282828;
 }
