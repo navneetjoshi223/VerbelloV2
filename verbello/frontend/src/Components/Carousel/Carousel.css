@@ -4,8 +4,7 @@
   /* max-width: 800px;  Adjust the maximum width */
   margin: 0 auto;
   overflow: hidden;
-  border-radius: 1em;
-  background-color: black;
+  background-color: #282828;
 }
 
 .slide {
