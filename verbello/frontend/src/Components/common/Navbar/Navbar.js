@@ -29,7 +29,7 @@ const Navbar = () => {
           </ul>
 
           <Link to="/login" className="login">
-            <button type="button" className="btn btn-primary mx-1">
+            <button type="button" className="btn btn-outline-light mx-1">
               Login
             </button>
           </Link>
