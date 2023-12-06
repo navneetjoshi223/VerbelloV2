@@ -1,5 +1,6 @@
 import React from 'react';
 import verbelloIntro from '../../assets/gifs/verbello-intro.gif';
+import './IntroCard.css';
 
 const IntroCard = () => {
   return (
@@ -8,7 +9,7 @@ const IntroCard = () => {
           <div className="col-md-7">
             <img src={verbelloIntro} alt="Animation" className="img-fluid" />
           </div>
-          <div className="col-md-5 ">
+          <div className="col-md-5">
             <h1 className="verbello-slogan">
               Your gateway to multilingual mastery.
             </h1>
