@@ -22,7 +22,7 @@
     border-radius: 50%; /* Make the image completely round */
     object-fit: cover; /* Maintain aspect ratio and cover the entire area */
     margin: 0 auto; /* Center the image horizontally */
-    display: block; /* Ensure block display for the image */
+    display: block;
   }
 
 .slide-text {
