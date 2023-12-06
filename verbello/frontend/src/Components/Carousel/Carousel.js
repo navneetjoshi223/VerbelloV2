@@ -1,36 +1,54 @@
 import React, { useState, useEffect } from 'react';
 import './Carousel.css'; // Import your custom carousel CSS
-//import image1 from '../../assets/images/portuguese/'
 
 const Carousel = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
-  const images = [
-    './images/testimonials/testimonials-1.jpg',
-    './images/testimonials/testimonials-2.jpg',
-    './images/testimonials/testimonials-3.jpg',
-    './images/testimonials/testimonials-4.jpg',
-    './images/testimonials/testimonials-5.jpg',
+  const slides = [
+    {
+      image: './images/testimonials/testimonials-1.jpg',
+      text: '"Verbello has helped me to get a good grasp of the language in a fun and challenging way. I enjoy the dialogues and scenarios."',
+    },
+    {
+      image: './images/testimonials/testimonials-2.jpg',
+      text: '"Great way to learn a language. Fun, interactive, and engaging. Almost like real immersion. I recommened it."',
+    },
+    {
+      image: './images/testimonials/testimonials-3.jpg',
+      text: '"An addictively fun and easy way to learn a new language or brush up on language skills! I love it very much."',
+    },
+    {
+      image: './images/testimonials/testimonials-4.jpg',
+      text: '"I have really enjoyed learning a new language with Verbello, it made it accessible and fun and fit into my busy time table."',
+    },
+    {
+      image: './images/testimonials/testimonials-5.jpg',
+      text: '"With unique features and a clear structure, Verbello is the best free app for learning a new language or sharpening your skills."',
+    },
   ];
 
   useEffect(() => {
     const interval = setInterval(() => {
-      setCurrentSlide((prevSlide) => (prevSlide === images.length - 1 ? 0 : prevSlide + 1));
-    }, 5000); // Change slide every 5 seconds (adjust as needed)
+      setCurrentSlide((prevSlide) => (prevSlide === slides.length - 1 ? 0 : prevSlide + 1));
+    }, 5000); // Change slide every 5 seconds
 
     return () => clearInterval(interval);
-  }, [images.length]);
+  }, [slides.length]);
 
   return (
     <div className="carousel p-3">
-      {images.map((image, index) => (
+      {slides.map((slide, index) => (
         <div
           key={index}
           className={index === currentSlide ? 'slide active' : 'slide'}
-          style={{ backgroundImage: `url(${image})` }}
-        />
+        >
+          <img src={slide.image} alt={`Testimonial ${index + 1}`} className="slide-image" />
+          <div className="slide-text text-center">
+            <p>{slide.text}</p>
+          </div>
+        </div>
       ))}
       <div className="dots">
-        {images.map((_, index) => (
+        {slides.map((_, index) => (
           <span
             key={index}
             className={index === currentSlide ? 'dot active' : 'dot'}
