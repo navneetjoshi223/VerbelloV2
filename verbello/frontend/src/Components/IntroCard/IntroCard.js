@@ -14,7 +14,7 @@ const IntroCard = () => {
               Your gateway to multilingual mastery.
             </h1>
             <div className="card-body">
-              <h5 className="card-text pt-4">
+              <h5 className="card-text pt-4 pb-4">
                 Embarking on a journey to learn a new language is a thrilling
                 and rewarding experience. Language opens doors to new cultures,
                 people, and opportunities. 
