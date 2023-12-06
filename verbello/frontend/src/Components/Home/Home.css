@@ -18,3 +18,7 @@
 .card-language:hover {
   transform: scale(1.1) rotateY(10deg) rotateX(10deg); /* Scales and rotates the card on hover */
 }
+
+/* .country {
+  border-radius: 1em;
+} */
