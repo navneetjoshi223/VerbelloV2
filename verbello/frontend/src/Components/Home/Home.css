@@ -8,13 +8,19 @@
 
 .languages-offered {
   border: none;
+  background-color: #e3f7f6;
 }
 
 .card-language {
   perspective: 1000px; /* Adds a 3D perspective effect */
   transition: transform 0.5s;
+  background-color: #e3f7f6;
 }
 
 .card-language:hover {
   transform: scale(1.1) rotateY(10deg) rotateX(10deg); /* Scales and rotates the card on hover */
 }
+
+/* .country {
+  border-radius: 1em;
+} */

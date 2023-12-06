@@ -2,6 +2,7 @@ import React from "react";
 import Navbar from "../common/Navbar/Navbar";
 import IntroCard from "../IntroCard/IntroCard";
 import "./Home.css";
+import Carousel from "../Carousel/Carousel";
 //import Testimonials from "../Testimonials/Testimonials";
 //import franceFlag from '../../assets/images/french/france.jpeg';
 
@@ -18,9 +19,9 @@ const Home = () => {
     <>
       <Navbar />
       <IntroCard />
-      <div class="card languages-offered m-3 p-3">
-        <div class="card-body">
-          <h3 class="card-title custom-header pb-4">Languages we offer</h3>
+      <div className="card languages-offered m-3 p-3">
+        <div className="card-body">
+          <h3 className="card-title custom-header pb-4">Languages we offer</h3>
           <div className="card-group">
             {offerings.map((offering, index) => (
               <div className="card card-language border-0 p-3" key={index}>
@@ -37,6 +38,7 @@ const Home = () => {
           </div>
         </div>
       </div>
+      <Carousel />
     </>
   );
 };
