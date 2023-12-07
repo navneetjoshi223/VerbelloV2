@@ -6,17 +6,30 @@ import "./QuizQuestions.css";
 import Navbar from "../common/Navbar/Navbar";
 import Footer from "../common/Footer/Footer";
 
-const QuizQuestions = () => {
+const QuizQuestions = (props) => {
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [selectedOption, setSelectedOption] = useState(null);
   const [score, setScore] = useState(0);
+  const correctAnswerAudioRef = React.useRef(null);
+  const lessonCompletedAudioRef = React.useRef(null);
 
   /** Navneet's useStates */
   const [isAnsweredCorrectly, setIsAnsweredCorrectly] = useState(false);
 
   useEffect(() => {
     console.log("isAnsweredCorrectly? ", isAnsweredCorrectly);
+    if (isAnsweredCorrectly) {
+      playSuccessAudio();
+    }
   }, [isAnsweredCorrectly]);
+
+  const playSuccessAudio = () => {
+    correctAnswerAudioRef.current.play();
+  };
+
+  const playLessonCompletedAudio = () => {
+    lessonCompletedAudioRef.current.play();
+  };
 
   const handleOptionClick = (optionIndex) => {
     setSelectedOption(optionIndex);
@@ -68,24 +81,37 @@ const QuizQuestions = () => {
 
   const handleCompleteQuiz = () => {
     console.log("Quiz Completed!");
+    playLessonCompletedAudio();
     //make api call to user and update lessons completed info
   };
 
   return (
     <>
       <Navbar />
-      {selectedOption!== null ?
-        (isAnsweredCorrectly ? (
-          <div class="alert alert-success mx-auto mt-2" role="alert">
+
+      <audio ref={correctAnswerAudioRef}>
+        <source src="./media/success-correct-answer.mp3" type="audio/mpeg" />
+        Your browser does not support the audio element.
+      </audio>
+
+      <audio ref={lessonCompletedAudioRef}>
+        <source src="./media/success-lesson-completed.mp3" type="audio/mpeg" />
+        Your browser does not support the audio element.
+      </audio>
+
+      {selectedOption !== null ? (
+        isAnsweredCorrectly ? (
+          <div className="alert alert-success mx-auto mt-2" role="alert">
             Great job!
           </div>
         ) : (
-          <div class="alert alert-danger mx-auto mt-2" role="alert">
+          <div className="alert alert-danger mx-auto mt-2" role="alert">
             Incorrect answer! Please try again.
           </div>
-        )) : null
+        )
+      ) : null}
 
-    }
+      <h4 className="p-3 m-3">Quiz: {props.lessonName}</h4>
 
       <div className="row">
         <div className="quiz-container card m-5 mx-auto">

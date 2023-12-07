@@ -109,6 +109,7 @@ button:hover {
 
 .alert-success {
   width: 50%;
+  background-color: #95ff95;
 }
 
 .alert-danger {
