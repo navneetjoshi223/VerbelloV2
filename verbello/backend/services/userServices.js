@@ -6,8 +6,117 @@ async function findUserByEmail(email) {
 }
 
 async function findUserByID(_id) {
-  return User.findById(_id).select("-password");
 
+  return User.findById(_id).select("-password").lean();
+
+}
+
+async function enroll(_id, language) {
+  try {
+    // Find the user by ID
+    const user = await User.findById(_id);
+
+    if (!user) {
+      // Handle the case where the user is not found
+      return { success: false, message: 'User not found.' };
+    }
+
+    // Assuming the courses property exists on the User model
+    // Modify the logic based on your actual User model structure
+    user.courses = user.courses || []; // Ensure courses array exists
+
+    // Check if the language is already enrolled
+    const existingCourse = user.courses.find(course => course.language === language);
+
+    if (existingCourse) {
+      // Handle the case where the language is already enrolled
+      return { success: false, message: `User is already enrolled in ${language} course.` };
+    }
+
+    // Enroll the user in the new language
+    user.courses.push({ language:language });
+
+    // Save the updated user object
+    await user.save();
+
+    return { success: true, message: `User enrolled in ${language} course successfully.` };
+  } catch (error) {
+    // Handle any errors that may occur during the database operation
+    console.error('Error enrolling user:', error);
+    return { success: false, message: 'Error enrolling user.' };
+  }
+}
+
+
+async function completeQuestion(_id, language) {
+  try {
+    // Find the user by ID
+    const user = await User.findById(_id);
+
+    if (!user) {
+      // Handle the case where the user is not found
+      return { success: false, message: 'User not found.' };
+    }
+
+    // Assuming the courses property exists on the User model
+    // Modify the logic based on your actual User model structure
+    user.courses = user.courses || []; // Ensure courses array exists
+
+    // Check if the language is already enrolled
+    const existingCourse = user.courses.find(course => course.language === language);
+
+    if (existingCourse) {
+      // Handle the case where the language is already enrolled
+      return { success: false, message: `User is already enrolled in ${language} course.` };
+    }
+
+    // Enroll the user in the new language
+    existingCourse.currentQuestion=existingCourse.currentQuestion+1
+
+    // Save the updated user object
+    await user.save();
+
+    return { success: true, message: `Completed the question` };
+  } catch (error) {
+    // Handle any errors that may occur during the database operation
+    console.error('Error enrolling user:', error);
+    return { success: false, message: 'Error completing question user.' };
+  }
+}
+async function completeLesson(_id, language) {
+  try {
+    // Find the user by ID
+    const user = await User.findById(_id);
+
+    if (!user) {
+      // Handle the case where the user is not found
+      return { success: false, message: 'User not found.' };
+    }
+
+    // Assuming the courses property exists on the User model
+    // Modify the logic based on your actual User model structure
+    user.courses = user.courses || []; // Ensure courses array exists
+
+    // Check if the language is already enrolled
+    const existingCourse = user.courses.find(course => course.language === language);
+
+    if (existingCourse) {
+      // Handle the case where the language is already enrolled
+      return { success: false, message: `User is already enrolled in ${language} course.` };
+    }
+
+    // Enroll the user in the new language
+    existingCourse.lessonsCompleted=existingCourse.lessonsCompleted+1
+
+    // Save the updated user object
+    await user.save();
+
+    return { success: true, message: `Completed the lesson` };
+  } catch (error) {
+    // Handle any errors that may occur during the database operation
+    console.error('Error enrolling user:', error);
+    return { success: false, message: 'Error completing lesson user.' };
+  }
 }
 
 async function authenticateLogin(email, password) {
@@ -57,5 +166,8 @@ module.exports = {
 
   authenticateSignup,
   authenticateLogin,
-  findUserByID
+  findUserByID,
+  enroll,
+  completeLesson,
+  completeQuestion
 };

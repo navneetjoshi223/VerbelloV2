@@ -5,10 +5,11 @@ import "./Home.css";
 import Carousel from "../Carousel/Carousel";
 import Footer from "../common/Footer/Footer";
 import Userprofile from "../UserProfile/Userprofile";
+import axios from 'axios'
 
 const Home = () => {
   
-
+const [userData,setUserData]=useState({})
   
   const offerings = [
     { language: "French", img: "./images/flags/france.jpeg" },
@@ -22,15 +23,38 @@ const Home = () => {
     window.sessionStorage.getItem("userFullName")
   );
 
-  // useEffect(() => {
 
-  // }, []);
+
+  useEffect(() => {
+    console.log(window.sessionStorage.getItem("userId"), "Check");
+    let _id=window.sessionStorage.getItem("userId")
+    let fetchData = async () => {
+      try{
+      let result = await axios.get("http://localhost:2000/api/users/userdata", {
+        params: {
+          _id
+        },
+      });
+      let userDatatemp=result.data.data
+      console.log(userDatatemp)
+      setUserData(userDatatemp)
+    }catch(e){
+      console.log(e)
+    }
+      // console.log(result.data, "Data");
+      // let quizData = transformQuizData(result.data.data);
+      // console.log(quizData, "QuizData");
+      // setQuestions(quizData);
+    };
+
+    fetchData();
+  }, []);
 
   return (
     <>
       <Navbar userFullName={userFullName} />
       {userFullName ? (
-        <Userprofile />
+        <Userprofile userData={userData}/>
       ) : (
         <>
           <IntroCard />

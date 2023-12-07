@@ -69,11 +69,47 @@ async function signupUser(req, res) {
   };
 
   async function userData(req, res) {
-    const { _id } = req.body;
-    console.log(_id,'CRED')
+    const { _id } = req.query;
+    console.log(_id,'CRED55')
     try {
       const user = await userService.findUserByID(_id);
+      console.log(user,'USERR')
       res.json({status:200, data:user });
+    } catch (error) {
+      console.error(error.message,"IIIII");
+      res.status(401).json({ message: error.message });
+    }
+  }
+  async function enrollCourse(req, res) {
+    const { _id,language } = req.body;
+    console.log(_id,language,'OO')
+    try {
+      const user = await userService.enroll(_id,language)
+      console.log(user,'USERR')
+      res.json({status:200, data:user });
+    } catch (error) {
+      console.error(error.message,"IIIII");
+      res.status(401).json({ message: error.message });
+    }
+  }
+
+  async function completeQuestion(req, res) {
+    const { _id,language } = req.body;
+    try {
+      const user = await userService.completeQuestion(_id,language)
+      console.log(user,'USERR')
+      res.json({status:200});
+    } catch (error) {
+      console.error(error.message,"IIIII");
+      res.status(401).json({ message: error.message });
+    }
+  }
+  async function completeLesson(req, res) {
+    const { _id,language } = req.body;
+    try {
+      const user = await userService.completeLesson(_id,language)
+      console.log(user,'USERR')
+      res.json({status:200});
     } catch (error) {
       console.error(error.message,"IIIII");
       res.status(401).json({ message: error.message });
@@ -84,5 +120,9 @@ module.exports = {
   loginUser,
   signupUser,
   logoutUser,
-  checkSession
+  checkSession,
+  userData,
+  enrollCourse,
+  completeLesson,
+  completeQuestion
 };

@@ -3,8 +3,9 @@ const Schema = mongoose.Schema;
 
 const courseSchema = new Schema({
   language: String,
-  unitsCompleted: Number,
-  lessonsCompleted:Number
+  currentQuestion: { type: Number, default: 0 },
+  lessonsCompleted:{ type: Number, default: 0 }
+
 }, {
     timestamps: true,
   });
