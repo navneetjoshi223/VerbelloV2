@@ -134,7 +134,7 @@ async function authenticateLogin(email, password) {
   }
   console.log(user,'USER')
 
-  return { _id:user._id, fullName: user.fullName };
+  return { _id:user._id, fullName: user.fullName, role: user.role };
 }
 async function authenticateSignup(fullName, email, password) {
   const user = await findUserByEmail(email);

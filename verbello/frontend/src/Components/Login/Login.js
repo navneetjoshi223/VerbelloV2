@@ -66,15 +66,19 @@ const Login = () => {
         });
 
         const data = await response.json();
-        console.log(data);
+      console.log(data);
         if (response.ok) {
           //  alert(data.message);
           if (data.user) {
             window.sessionStorage.setItem("userId", data.user._id);
             window.sessionStorage.setItem("userFullName", data.user.fullName);
           }
-
-          navigate("/");
+          if(data.user.role === "admin") {
+            navigate("/admin");
+          } else {
+            navigate("/");
+          }
+          
         } else {
           // alert(`Login failed: ${data.message}`);
           console.log("Failed");

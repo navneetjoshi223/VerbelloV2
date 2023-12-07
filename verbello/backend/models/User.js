@@ -19,6 +19,10 @@ const userSchema = new Schema({
     type: Boolean,
     default: true, // Set the default value to true
   },
+  role: {
+    type: String,
+    default: "user", // Set the default value to true
+  },
 }, {
   timestamps: true,
 });
