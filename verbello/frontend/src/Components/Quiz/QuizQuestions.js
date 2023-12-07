@@ -5,6 +5,7 @@ import questions from "../../questions";
 import "./QuizQuestions.css";
 import Navbar from "../common/Navbar/Navbar";
 import Footer from "../common/Footer/Footer";
+import { useParams } from "react-router-dom";
 
 const QuizQuestions = (props) => {
   const [currentQuestion, setCurrentQuestion] = useState(0);
@@ -12,6 +13,7 @@ const QuizQuestions = (props) => {
   const [score, setScore] = useState(0);
   const correctAnswerAudioRef = React.useRef(null);
   const lessonCompletedAudioRef = React.useRef(null);
+  const { lessonName } = useParams();
 
   /** Navneet's useStates */
   const [isAnsweredCorrectly, setIsAnsweredCorrectly] = useState(false);
@@ -121,7 +123,7 @@ const QuizQuestions = (props) => {
             )
           ) : null}
 
-          <h4 className="p-3">Quiz: {props.lessonName}</h4>
+          <h4 className="p-3">Quiz: {lessonName}</h4>
 
           <div className="row">
             <div className="quiz-container card m-5 mx-auto">
@@ -168,6 +170,52 @@ const QuizQuestions = (props) => {
         Your browser does not support the audio element.
       </audio>
 
+      {selectedOption !== null ? (
+        isAnsweredCorrectly ? (
+          <div className="alert alert-success mx-auto mt-2" role="alert">
+            Great job!
+          </div>
+        ) : (
+          <div className="alert alert-danger mx-auto mt-2" role="alert">
+            Incorrect answer! Please try again.
+          </div>
+        )
+      ) : null}
+
+      <h4 className="p-3 m-3">Quiz: {lessonName}</h4>
+
+      <div className="row">
+        <div className="quiz-container card m-5 mx-auto">
+          <div className="card-body">
+            <div className="question font-weight-bold">
+              Question {currentQuestion + 1} of {questions.length}
+            </div>
+            <div className="question-and-options">
+              <div className="question-text">
+                {questions[currentQuestion].question}
+              </div>
+              <div className="options">{renderOptions()}</div>
+            </div>
+            {currentQuestion < questions.length - 1 ? (
+              <button
+                onClick={handleNextClick}
+                className="btn btn-primary m-2 mt-4"
+                disabled={!isAnsweredCorrectly}
+              >
+                Next
+              </button>
+            ) : (
+              <button
+                onClick={handleCompleteQuiz}
+                className="btn btn-success mt-3"
+                disabled={!isAnsweredCorrectly}
+              >
+                Complete Quiz
+              </button>
+            )}
+          </div>
+        </div>
+      </div>
       <Footer />
     </>
   );
