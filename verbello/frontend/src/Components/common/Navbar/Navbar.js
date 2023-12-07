@@ -69,11 +69,19 @@ const Navbar = (props) => {
                   {window.sessionStorage.getItem("userFullName")}
                 </button>
                 <ul className="dropdown-menu pt-0">
+                <li>
+                <Link to="/">
+                  <button className="dropdown-item">
+                  My Profile
+                  </button>
+                      </Link>
+                  </li>
                   <li>
                     <button className="dropdown-item" onClick={handleLogout}>
                       Log Out
                     </button>
                   </li>
+                  
                 </ul>
               </div>
             </>

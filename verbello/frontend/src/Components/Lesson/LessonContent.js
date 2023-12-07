@@ -29,7 +29,6 @@ const LessonContent = () => {
         setLessonContent(lessonContent);
       } catch (error) {
         console.error("Error fetching lesson data:", error);
-        // Handle the error, you can set an error state or log it as needed
       }
     };
   
@@ -45,7 +44,6 @@ const LessonContent = () => {
     setClickedImages(updatedClickedImages);
   };
 
-  //logic to enable button if all images clicked  (by aum)
   const allImagesClicked = lessonContent.every((image) =>
     clickedImages.has(image.text)
   );
@@ -54,7 +52,9 @@ const LessonContent = () => {
     <>
       <Navbar />
       <div className="lesson-content-container m-3">
-        <h3>Lesson: {lessonName}</h3>
+      <div className="text-center mb-4">
+          <h3>Lesson: {lessonName}</h3>
+        </div>
         <div className="image-container">
           {lessonContent.map((imageData, index) => (
             <div>
@@ -72,16 +72,17 @@ const LessonContent = () => {
             </div>
           ))}
         </div>
+        <div className="text-center mt-4">
         <Link
           className="mx-auto"
           to={allImagesClicked ? `/quiz/${language}/${lessonName}` : "/"}
         >
-          {" "}
           {/* Link to QuizQuestions */}
           <button className="btn btn-primary" disabled={!allImagesClicked}>
             Take a Quiz
           </button>
         </Link>
+        </div>
       </div>
       <Footer />
     </>
