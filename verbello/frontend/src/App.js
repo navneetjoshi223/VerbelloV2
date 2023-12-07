@@ -9,8 +9,12 @@ import Signup from "./Components/Signup/Signup";
 
 import Userprofile from './Components/UserProfile/Userprofile';
 import Lesson from './Components/Lesson/Lesson';
-import { loginStatus } from "./utils/loginStatus";
 
+
+
+
+import ContactUs from './Components/ContactUs/ContactUs';
+import { loginStatus } from "./utils/loginStatus";
 const App = () => {
   const [user, setUser] = useState({});
 
@@ -38,7 +42,7 @@ const App = () => {
       <BrowserRouter>
         <Routes>
           <Route path="/" exact element={<Home />} />
-          <Route path="/quiz/:language/:lessonName" element={<QuizQuestions />} />
+          <Route path="/quiz/:lessonName" element={<QuizQuestions />} />
           {/* <Route path="/quiz" element={<QuizQuestions questions={questions} />} /> */}
           {/* <Route path="/login" element={<Login/>} />
           <Route path="/signup" element={<SignUp />} />
