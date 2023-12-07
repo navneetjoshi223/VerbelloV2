@@ -7,5 +7,6 @@ const userRoutes = express.Router();
 userRoutes.post('/signup', userController.signupUser);
 userRoutes.post('/login', userController.loginUser);
 userRoutes.post('/logout', userController.logoutUser);
+userRoutes.post('/checkSession', userController.checkSession);
 
 module.exports = userRoutes;

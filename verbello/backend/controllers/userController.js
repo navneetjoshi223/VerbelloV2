@@ -10,8 +10,14 @@ async function loginUser(req, res) {
     }
 
     const user = await userService.authenticateLogin(email, password);
-    console.log(user,'USERRR')
-    req.session.user = { _id: user._id, username: user.fullName };
+    console.log(user,'USER')
+    // req.session.user = { _id: user._id };
+    console.log(user._id,user.fullName,'Credentails')
+    
+    req.session._id=user._id;
+    req.session.fullName=user.fullName
+    await req.session.save();
+    console.log(req.session.user)
 
     res.json({ message: 'Login successful', user });
   } catch (error) {
@@ -45,13 +51,26 @@ async function signupUser(req, res) {
       if (err) {
         res.status(500).json({ error: 'Internal Server Error' });
       } else {
+        res.clearCookie("session-id"); 
         res.json({ message: 'Logout successful' });
       }
     });
   };
 
+  async function checkSession(req, res) {
+    if (req.session._id) {
+      console.log("logged in");
+     // return res.status(200).send(req.session.email1);
+      return res.json({ valid: true, _id: req.session._id ,fullName:req.session.fullName });
+    } else {
+      console.log("dhccchs");
+      return res.json({valid: false});
+    }
+  };
+
 module.exports = {
   loginUser,
   signupUser,
-  logoutUser
+  logoutUser,
+  checkSession
 };
