@@ -43,7 +43,8 @@ const Carousel = () => {
         >
           <img src={slide.image} alt={`Testimonial ${index + 1}`} className="slide-image" />
           <div className="slide-text text-center">
-            <p>{slide.text}</p>
+          <p className="slide-description">{slide.text}</p>
+            <a href="/signup" className="cta-button">Start Learning Now</a>
           </div>
         </div>
       ))}
