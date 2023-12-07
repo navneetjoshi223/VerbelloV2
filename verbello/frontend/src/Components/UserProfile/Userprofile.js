@@ -98,104 +98,126 @@ function Userprofile(props) {
     let lessonname=courseMap[course.completion]
     navigate(`/lesson/${course.language}/${lessonname}`)
   }
+  const ViewAll=(course)=>{
+    console.log(course,'RESUM')
+    let courseMap=["Colors","Fruits","Vegetables","Birds","Animals","Tenses","Articles","Adjectives","Preposition","Simple Sentences","Complex Sentences","Real World Conversations"]
+    let lessonname=courseMap[course.completion]
+    navigate(`/lesson/${course.language}`)
+  }
   
   
 
   return (
     <>
-      <div className="active-in">
-        <div className="active-courses">
-          <h3>Your Active Courses</h3>
+    <div className="active-in">
+      <div className="active-courses">
+        {courses.some((course) => course.isActive) && (
+          <>
+            <h3>Your Active Courses</h3>
+            <div className="card-container">
+              {courses
+                .filter((course) => course.isActive)
+                .map((course, index) => (
+                  <Card key={index}>
+                    <div className="active-card">
+                      <div>
+                        <Card.Body>
+                          <Card.Title>{course.language}</Card.Title>
+                          <Card.Img
+                            className="card-im"
+                            variant="top"
+                            src={course.imageUrl}
+                            alt={`${course.language} flag`}
+                          />
+                        </Card.Body>
+                      </div>
+                      <div className="progress-container">
+                        <div>
+                          Current Progress
+                          <ProgressBar
+                            now={(course.completion * 100) / 12}
+                            label={`${parseInt(
+                              (course.completion * 100) / 12
+                            )}%`}
+                          />
+                        </div>
+                        <div>
+                          <div>Badges that you have earned</div>
+                          <div className="badges">
+                            {course.completion > 75 && (
+                              <img
+                                className="badg"
+                                src={golden}
+                                alt="Golden Badge"
+                              />
+                            )}
+                            {course.completion > 50 && (
+                              <img
+                                className="badg"
+                                src={silver}
+                                alt="Silver Badge"
+                              />
+                            )}
+                            {course.completion > 25 && (
+                              <img
+                                className="badg"
+                                src={bronze}
+                                alt="Bronze Badge"
+                              />
+                            )}
+                          </div>
+                          {course.completion < 100 && (
+                            // Show the button if completion is less than 100%
+                            <div className="resume-button">
+                              <button onClick={() => Resume(course)} className="mr-2">
+                                Resume Lesson
+                              </button>
+                              <button onClick={() => ViewAll(course)} >
+                                View All Lessons
+                              </button>
+                            </div>
+                          )}
+                        </div>
+                      </div>
+                    </div>
+                  </Card>
+                ))}
+            </div>
+          </>
+        )}
+        {/* Inactive courses section */}
+        <div className="inactive-courses">
+          <h3>Enroll in New Courses</h3>
+  
           <div className="card-container">
-            {courses.filter((course) => course.isActive).map((course, index) => (
-              <Card key={index}>
-                <div className="active-card">
-                  <div>
-                    <Card.Body>
-                      <Card.Title>{course.language}</Card.Title>
+            {courses
+              .filter((course) => !course.isActive)
+              .map((course, index) => (
+                <Card key={index} style={{ width: "18rem" }}>
+                  <Card.Body>
+                    <Card.Title>{course.language}</Card.Title>
+                    <div className="round-image">
                       <Card.Img
-                        className="card-im"
                         variant="top"
                         src={course.imageUrl}
                         alt={`${course.language} flag`}
                       />
-                    </Card.Body>
-                  </div>
-                  <div className="progress-container">
-                    <div>
-                      Current Progress
-                      <ProgressBar
-                        now={course.completion}
-                        label={`${course.completion}%`}
-                      />
                     </div>
-                    <div>
-                      <div>Badges that you have earned</div>
-                      <div className="badges">
-                        {course.completion > 75 && (
-                          <img
-                            className="badg"
-                            src={golden}
-                            alt="Golden Badge"
-                          />
-                        )}
-                        {course.completion > 50 && (
-                          <img
-                            className="badg"
-                            src={silver}
-                            alt="Silver Badge"
-                          />
-                        )}
-                        {course.completion > 25 && (
-                          <img
-                            className="badg"
-                            src={bronze}
-                            alt="Bronze Badge"
-                          />
-                        )}
-                      </div>
-                      {course.completion < 100 && ( // Show the button if completion is less than 100%
-                        <div className="resume-button">
-                          <button onClick={()=>Resume(course)}>Resume Lesson</button>
-                        </div>
-                      )}
-                    </div>
-                  </div>
-                </div>
-              </Card>
-            ))}
-          </div>
-        </div>
-
-        {/* Inactive courses section */}
-        <div className="inactive-courses">
-          <h3>Enroll in New Courses</h3>
-
-          <div className="card-container">
-            {courses.filter((course) => !course.isActive).map((course, index) => (
-              <Card key={index} style={{ width: "18rem" }}>
-                <Card.Body>
-                  <Card.Title>{course.language}</Card.Title>
-                  <div className="round-image">
-                    <Card.Img
-                      variant="top"
-                      src={course.imageUrl}
-                      alt={`${course.language} flag`}
-                    />
-                  </div>
-                  <Button
-                    variant="success"
-                    onClick={() => enrollCourse(course)}
-                  >
-                    Enroll
-                  </Button>
-                </Card.Body>
-              </Card>
-            ))}
+                    <Button
+                      variant="success"
+                      onClick={() => enrollCourse(course)}
+                    >
+                      Enroll
+                    </Button>
+                  </Card.Body>
+                </Card>
+              ))}
           </div>
         </div>
       </div>
-    </>
+    </div>
+  </>
+  
   );
 }
 

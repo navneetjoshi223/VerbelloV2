@@ -100,10 +100,11 @@ async function completeLesson(_id, language) {
     // Check if the language is already enrolled
     const existingCourse = user.courses.find(course => course.language === language);
 
-    if (existingCourse) {
-      // Handle the case where the language is already enrolled
-      return { success: false, message: `User is already enrolled in ${language} course.` };
-    }
+    // if (existingCourse) {
+    //   // Handle the case where the language is already enrolled
+    //   return { success: false, message: `User is already enrolled in ${language} course.` };
+    // }
+    console.log(existingCourse,'EXIST')
 
     // Enroll the user in the new language
     existingCourse.lessonsCompleted=existingCourse.lessonsCompleted+1
