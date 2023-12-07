@@ -68,6 +68,18 @@ async function signupUser(req, res) {
     }
   };
 
+  async function userData(req, res) {
+    const { _id } = req.body;
+    console.log(_id,'CRED')
+    try {
+      const user = await userService.findUserByID(_id);
+      res.json({status:200, data:user });
+    } catch (error) {
+      console.error(error.message,"IIIII");
+      res.status(401).json({ message: error.message });
+    }
+  }
+
 module.exports = {
   loginUser,
   signupUser,

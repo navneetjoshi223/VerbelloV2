@@ -29,7 +29,7 @@ const MongoStore = require('connect-mongo');
 const port = 2000; // Change as needed
 
 // Connect to MongoDB
-mongoose.connect('mongodb://localhost:27017/Final_Project1');
+mongoose.connect('mongodb+srv://Ashwin:Ashwin%40123@cluster0.5str1hu.mongodb.net/Verbello');
 
 const corsOptions = {
   origin: function (origin, callback) {
@@ -81,7 +81,7 @@ app.use(
     resave: false,
     saveUninitialized: false,
     store: MongoStore.create({
-      mongoUrl: "mongodb://localhost:27017/Final_Project1",
+      mongoUrl: "mongodb+srv://Ashwin:Ashwin%40123@cluster0.5str1hu.mongodb.net/Verbello",
     }),
   })
 );

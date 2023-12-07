@@ -5,6 +5,11 @@ async function findUserByEmail(email) {
   return User.findOne({ email });
 }
 
+async function findUserByID(_id) {
+  return User.findById(_id).select("-password");
+
+}
+
 async function authenticateLogin(email, password) {
   const user = await findUserByEmail(email);
   // console.log(user)
@@ -51,5 +56,6 @@ async function authenticateSignup(fullName, email, password) {
 module.exports = {
 
   authenticateSignup,
-  authenticateLogin
+  authenticateLogin,
+  findUserByID
 };

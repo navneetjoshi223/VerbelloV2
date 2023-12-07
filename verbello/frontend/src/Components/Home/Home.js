@@ -7,6 +7,9 @@ import Footer from "../common/Footer/Footer";
 import Userprofile from "../UserProfile/Userprofile";
 
 const Home = () => {
+  
+
+  
   const offerings = [
     { language: "French", img: "./images/flags/france.jpeg" },
     { language: "German", img: "./images/flags/germany.jpeg" },

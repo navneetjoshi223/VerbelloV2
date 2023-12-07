@@ -1,4 +1,4 @@
-const userService = require('../services/qnaServices');
+const qnaService = require('../services/qnaServices');
 
 async function check(req, res) {
   // const { email, password } = req.body;
@@ -20,6 +20,29 @@ async function check(req, res) {
   // }
 }
 
+async function fetchQuestion(req, res) {
+  const { language,lesson } = req.query;
+  console.log(language,lesson,'CRED')
+  try {
+    const quizData = await qnaService.getQuizData(language,lesson)
+    res.json({status:200, data:quizData });
+  } catch (error) {
+    console.error(error.message,"IIIII");
+    res.status(401).json({ message: error.message });
+  }
+}
+// async function fetchLesson(req, res) {
+//   const { language,lesson } = req.body;
+//   console.log(language,lesson,'CRED')
+//   try {
+//     const quizData = await qnaService.getQuizData(language,lesson)
+//     res.json({status:200, data:quizData });
+//   } catch (error) {
+//     console.error(error.message,"IIIII");
+//     res.status(401).json({ message: error.message });
+//   }
+// }
+
 module.exports = {
-  check
+  check,fetchQuestion
 };
