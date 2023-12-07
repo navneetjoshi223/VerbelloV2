@@ -15,6 +15,7 @@ const QuizQuestions = (props) => {
 
   /** Navneet's useStates */
   const [isAnsweredCorrectly, setIsAnsweredCorrectly] = useState(false);
+  const [isQuizCompleted, setIsQuizCompleted] = useState(false);
 
   useEffect(() => {
     console.log("isAnsweredCorrectly? ", isAnsweredCorrectly);
@@ -81,6 +82,7 @@ const QuizQuestions = (props) => {
 
   const handleCompleteQuiz = () => {
     console.log("Quiz Completed!");
+    setIsQuizCompleted(true);
     playLessonCompletedAudio();
     //make api call to user and update lessons completed info
   };
@@ -88,6 +90,73 @@ const QuizQuestions = (props) => {
   return (
     <>
       <Navbar />
+
+      {isQuizCompleted ? (
+        <>
+          <div className="d-flex align-items-center mx-auto">
+            <img
+              src="./images/mascot/pingu-speaking.jpeg"
+              alt="Mascot congratulating."
+              className="mascot-speaking"
+            />
+            <div className="text-center p-5">
+              <h2 className="mb-4">Kudos! You've done Amazing!</h2>
+              <button className="btn btn-outline-primary btn-lg">
+                Take Next Lesson
+              </button>
+            </div>
+          </div>
+        </>
+      ) : (
+        <>
+          {selectedOption !== null ? (
+            isAnsweredCorrectly ? (
+              <div className="alert alert-success mx-auto mt-2" role="alert">
+                Great job!
+              </div>
+            ) : (
+              <div className="alert alert-danger mx-auto mt-2" role="alert">
+                Incorrect answer! Please try again.
+              </div>
+            )
+          ) : null}
+
+          <h4 className="p-3">Quiz: {props.lessonName}</h4>
+
+          <div className="row">
+            <div className="quiz-container card m-5 mx-auto">
+              <div className="card-body">
+                <div className="question font-weight-bold">
+                  Question {currentQuestion + 1} of {questions.length}
+                </div>
+                <div className="question-and-options">
+                  <div className="question-text">
+                    {questions[currentQuestion].question}
+                  </div>
+                  <div className="options">{renderOptions()}</div>
+                </div>
+                {currentQuestion < questions.length - 1 ? (
+                  <button
+                    onClick={handleNextClick}
+                    className="btn btn-primary m-2 mt-4"
+                    disabled={!isAnsweredCorrectly}
+                  >
+                    Next
+                  </button>
+                ) : (
+                  <button
+                    onClick={handleCompleteQuiz}
+                    className="btn btn-success mt-3"
+                    disabled={!isAnsweredCorrectly}
+                  >
+                    Complete Quiz
+                  </button>
+                )}
+              </div>
+            </div>
+          </div>
+        </>
+      )}
 
       <audio ref={correctAnswerAudioRef}>
         <source src="./media/success-correct-answer.mp3" type="audio/mpeg" />
@@ -99,52 +168,6 @@ const QuizQuestions = (props) => {
         Your browser does not support the audio element.
       </audio>
 
-      {selectedOption !== null ? (
-        isAnsweredCorrectly ? (
-          <div className="alert alert-success mx-auto mt-2" role="alert">
-            Great job!
-          </div>
-        ) : (
-          <div className="alert alert-danger mx-auto mt-2" role="alert">
-            Incorrect answer! Please try again.
-          </div>
-        )
-      ) : null}
-
-      <h4 className="p-3 m-3">Quiz: {props.lessonName}</h4>
-
-      <div className="row">
-        <div className="quiz-container card m-5 mx-auto">
-          <div className="card-body">
-            <div className="question font-weight-bold">
-              Question {currentQuestion + 1} of {questions.length}
-            </div>
-            <div className="question-and-options">
-              <div className="question-text">
-                {questions[currentQuestion].question}
-              </div>
-              <div className="options">{renderOptions()}</div>
-            </div>
-            {currentQuestion < questions.length - 1 ? (
-              <button
-                onClick={handleNextClick}
-                className="btn btn-primary m-2 mt-4"
-                disabled={!isAnsweredCorrectly}
-              >
-                Next
-              </button>
-            ) : (
-              <button
-                onClick={handleCompleteQuiz}
-                className="btn btn-success mt-3"
-                disabled={!isAnsweredCorrectly}
-              >
-                Complete Quiz
-              </button>
-            )}
-          </div>
-        </div>
-      </div>
       <Footer />
     </>
   );
