@@ -1,9 +1,6 @@
-import React, { useState,useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import axios from 'axios'
 import "./Login.css";
-import { loginStatus } from "../../utils/loginStatus";
-
 
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -16,6 +13,13 @@ const Login = () => {
 
   const navigate = useNavigate();
   const [user, setUser] = useState(null);
+
+  useEffect(() => {
+    const userId = window.sessionStorage.getItem("userId");
+    if (userId != null) {
+      navigate(window.location.origin);
+    }
+  }, []);
 
   // useEffect(()=>{
   //   const storedUserData = sessionStorage.getItem("user");
@@ -44,36 +48,36 @@ const Login = () => {
     // Perform final validation and submit the form if everything is valid
     e.preventDefault();
     setIsLoading(true);
-  
+
     setIsEmailValid(validateEmail(email));
     setIsPasswordValid(!!password);
     if (isEmailValid && isPasswordValid) {
       // Perform signup logic
       console.log("Lets go");
-  
+
       try {
         const response = await fetch("http://localhost:2000/api/users/login", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
           },
-          credentials: 'include',
+          credentials: "include",
           body: JSON.stringify({ email, password }),
         });
-  
+
         const data = await response.json();
-        console.log(data)
+        console.log(data);
         if (response.ok) {
           //  alert(data.message);
           if (data.user) {
-            window.sessionStorage.setItem('userId', data.user._id);
-            window.sessionStorage.setItem('userFullName', data.user.fullName);
+            window.sessionStorage.setItem("userId", data.user._id);
+            window.sessionStorage.setItem("userFullName", data.user.fullName);
           }
-          
+
           navigate("/");
         } else {
           // alert(`Login failed: ${data.message}`);
-          console.log('Failed');
+          console.log("Failed");
         }
       } catch (error) {
         console.error("Error during login:", error);
@@ -84,109 +88,103 @@ const Login = () => {
     }
     setIsLoading(false);
   };
-  
+
   const checkApi = async () => {
-    console.log('Inside');
+    console.log("Inside");
     let response;
-  
+
     try {
       response = await fetch("http://localhost:2000/api/qna/check", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
-        credentials: 'include',
+        credentials: "include",
       });
     } catch (e) {
-      console.error(e, 'ERR');
+      console.error(e, "ERR");
     }
-  
-    console.log(response, 'RES');
+
+    console.log(response, "RES");
   };
-  
+
   const checklogout = async () => {
-    console.log('Inside');
+    console.log("Inside");
     let response;
-  
+
     try {
       response = await fetch("http://localhost:2000/api/users/logout", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
-        credentials: 'include',
+        credentials: "include",
       });
     } catch (e) {
-      console.error(e, 'ERR');
+      console.error(e, "ERR");
     }
-  
-    console.log(response, 'RES');
+
+    console.log(response, "RES");
   };
   return (
-    <div
-      className="d-flex align-items-center justify-content-center vh-100"
-      style={{
-        background: 'url("your-background-image.jpg") center/cover',
-        backgroundColor: "rgba(255, 255, 255, 0.8)", // Adjust opacity here
-      }}
-    >
-      <div className="card p-4" style={{ width: "24rem" }}>
-        <h1 className="card-title text-center mb-4">Login</h1>
-        <button type="button" className="btn" onClick={()=>checkApi()}>Base class</button>
-        <button type="button" className="btn" onClick={()=>checklogout()}>Logout</button>
-        {!isLoginValid && (
-          <h4 className=" text-center m2-4 text-danger">Invalid Credentials!</h4>
-        )}
-        <form>
-          <div className="mb-3">
-            <label htmlFor="email" className="form-label">
-              Email address<span style={{ color: "red" }}>*</span>
-            </label>
-            <input
-              type="email"
-              className="form-control"
-              id="email"
-              placeholder="Enter email"
-              value={email}
-              onChange={handleEmailChange}
-            />
-            {!isEmailValid && (
-              <p style={{ color: "red" }}>Invalid email format</p>
-            )}
-          </div>
-          <div className="mb-3">
-            <label htmlFor="password" className="form-label">
-              Password<span style={{ color: "red" }}>*</span>
-            </label>
-            <input
-              type="password"
-              className="form-control"
-              id="password"
-              placeholder="Enter password"
-              value={password}
-              onChange={handlePasswordChange}
-            />
-            {!isPasswordValid && (
-              <p style={{ color: "red" }}>Password field is mandatory!</p>
-            )}
-          </div>
-          <button
-            type="submit"
-            className="btn btn-primary w-100"
-            onClick={(e) => handleSubmit(e)}
-          >
-            {isLoading ? (
-              <div className="spinner-border" role="status">
-                <span className="visually-hidden">Loading...</span>
-              </div>
-            ) : (
-              "Login"
-            )}
-          </button>
-          <p className="text-center mt-3">
-            Not a member? <a href="/signup">Signup</a>
-          </p>
-        </form>
+    <div className="login-container">
+      <div className="container d-flex align-items-center justify-content-center vh-100">
+        <div className="card p-4 login-card">
+          <h1 className="card-title text-center mb-4">Login</h1>
+          {!isLoginValid && (
+            <h4 className="text-center text-danger">Invalid Credentials!</h4>
+          )}
+          <form>
+            <div className="mb-3">
+              <label htmlFor="email" className="form-label">
+                Email address<span style={{ color: "red" }}>*</span>
+              </label>
+              <input
+                type="email"
+                className="form-control"
+                id="email"
+                placeholder="Enter email"
+                value={email}
+                onChange={handleEmailChange}
+              />
+              {!isEmailValid && (
+                <p className="text-danger">Invalid email format</p>
+              )}
+            </div>
+            <div className="mb-3">
+              <label htmlFor="password" className="form-label">
+                Password<span style={{ color: "red" }}>*</span>
+              </label>
+              <input
+                type="password"
+                className="form-control"
+                id="password"
+                placeholder="Enter password"
+                value={password}
+                onChange={handlePasswordChange}
+              />
+              {!isPasswordValid && (
+                <p className="text-danger">Password field is mandatory!</p>
+              )}
+            </div>
+            <button
+              type="submit"
+              className="btn btn-success w-100 mb-3"
+              onClick={(e) => handleSubmit(e)}
+            >
+              {isLoading ? (
+                <div className="spinner-border" role="status">
+                  <span className="visually-hidden">Loading...</span>
+                </div>
+              ) : (
+                "Login"
+              )}
+            </button>
+            <p className="text-center mt-3">
+              Not a member? <a href="/signup">Signup</a>
+            </p>
+          </form>
+        </div>
       </div>
     </div>
   );
