@@ -13,22 +13,15 @@ const Login = () => {
   const [isPasswordValid, setIsPasswordValid] = useState(true);
   const [isLoading, setIsLoading] = useState(false);
   const [isLoginValid, setIsLoginValid] = useState(true);
-  const [user, setUser] = useState(null);
+
   const navigate = useNavigate();
+  const [user, setUser] = useState(null);
 
-  useEffect(()=>{
-    const fetchDataAsync = async () => {
-      try {
-        const result = await loginStatus();
-        setUser(result._id)
-        console.log(result)
-      } catch (error) {
-        console.log(error)
-      }
-    };
-
-    fetchDataAsync();
-  },[])
+  // useEffect(()=>{
+  //   const storedUserData = sessionStorage.getItem("user");
+  //   setUser(JSON.parse(storedUserData));
+  //   console.log(JSON.parse(storedUserData),"user")
+  // },[])
 
   const validateEmail = (email) => {
     // Perform email validation logic (e.g., basic format check)
@@ -69,6 +62,7 @@ const Login = () => {
         });
   
         const data = await response.json();
+        console.log(data)
         if (response.ok) {
           //  alert(data.message);
           if (data.user) {

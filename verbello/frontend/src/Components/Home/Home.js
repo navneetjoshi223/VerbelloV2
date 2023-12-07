@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useState,useEffect } from "react";
 import Navbar from "../common/Navbar/Navbar";
 import IntroCard from "../IntroCard/IntroCard";
 import "./Home.css";
@@ -6,6 +6,9 @@ import Carousel from "../Carousel/Carousel";
 import Footer from "../common/Footer/Footer";
 
 const Home = () => {
+  
+
+  
   const offerings = [
     { language: "French", img: "./images/flags/france.jpeg" },
     { language: "German", img: "./images/flags/germany.jpeg" },
