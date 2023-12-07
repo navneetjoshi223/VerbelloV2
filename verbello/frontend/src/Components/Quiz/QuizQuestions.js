@@ -12,17 +12,16 @@ const QuizQuestions = () => {
   const [score, setScore] = useState(0);
 
   /** Navneet's useStates */
-  const[isAnsweredCorrectly, setIsAnsweredCorrectly] = useState(false);
-
+  const [isAnsweredCorrectly, setIsAnsweredCorrectly] = useState(false);
 
   useEffect(() => {
-    console.log('isAnsweredCorrectly? ', isAnsweredCorrectly);
+    console.log("isAnsweredCorrectly? ", isAnsweredCorrectly);
   }, [isAnsweredCorrectly]);
 
   const handleOptionClick = (optionIndex) => {
-      setSelectedOption(optionIndex);
-      const isCorrect = optionIndex === questions[currentQuestion].correctAnswer;
-      setIsAnsweredCorrectly(isCorrect);
+    setSelectedOption(optionIndex);
+    const isCorrect = optionIndex === questions[currentQuestion].correctAnswer;
+    setIsAnsweredCorrectly(isCorrect);
   };
 
   const handleNextClick = () => {
@@ -50,11 +49,16 @@ const QuizQuestions = () => {
   };
 
   const renderOptions = () => {
-
     return questions[currentQuestion].options.map((option, index) => (
       <div
         key={index}
-        className={`option m-2 ${(selectedOption === index) ? (isAnsweredCorrectly ? 'correct' : 'incorrect') : 'null' }`}
+        className={`option m-2 ${
+          selectedOption === index
+            ? isAnsweredCorrectly
+              ? "correct"
+              : "incorrect"
+            : "null"
+        }`}
         onClick={() => handleOptionClick(index)}
       >
         {option}
@@ -64,37 +68,55 @@ const QuizQuestions = () => {
 
   const handleCompleteQuiz = () => {
     console.log("Quiz Completed!");
+    //make api call to user and update lessons completed info
   };
 
   return (
     <>
       <Navbar />
-      <div
-        className="quiz-container card m-5"
-        // style={{ height: "500px", width: "400px" }}
-      >
-        <div className="card-body">
-          <div className="question font-weight-bold">
-            Question {currentQuestion + 1} of {questions.length}
+      {selectedOption!== null ?
+        (isAnsweredCorrectly ? (
+          <div class="alert alert-success mx-auto mt-2" role="alert">
+            Great job!
           </div>
-          <div className="question-and-options">
-            <div className="question-text">
-              {questions[currentQuestion].question}
+        ) : (
+          <div class="alert alert-danger mx-auto mt-2" role="alert">
+            Incorrect answer! Please try again.
+          </div>
+        )) : null
+
+    }
+
+      <div className="row">
+        <div className="quiz-container card m-5 mx-auto">
+          <div className="card-body">
+            <div className="question font-weight-bold">
+              Question {currentQuestion + 1} of {questions.length}
             </div>
-            <div className="options">{renderOptions()}</div>
+            <div className="question-and-options">
+              <div className="question-text">
+                {questions[currentQuestion].question}
+              </div>
+              <div className="options">{renderOptions()}</div>
+            </div>
+            {currentQuestion < questions.length - 1 ? (
+              <button
+                onClick={handleNextClick}
+                className="btn btn-primary m-2 mt-4"
+                disabled={!isAnsweredCorrectly}
+              >
+                Next
+              </button>
+            ) : (
+              <button
+                onClick={handleCompleteQuiz}
+                className="btn btn-success mt-3"
+                disabled={!isAnsweredCorrectly}
+              >
+                Complete Quiz
+              </button>
+            )}
           </div>
-          {currentQuestion < questions.length - 1 ? (
-            <button onClick={handleNextClick} className="btn btn-primary mt-3" disabled={!isAnsweredCorrectly}>
-              Next
-            </button>
-          ) : (
-            <button
-              onClick={handleCompleteQuiz}
-              className="btn btn-success mt-3"
-            >
-              Complete Quiz
-            </button>
-          )}
         </div>
       </div>
       <Footer />
