@@ -115,3 +115,19 @@ button:hover {
 .alert-danger {
   width: 50%;
 }
+
+/* If needed, add this CSS to control the layout */
+.d-flex {
+  display: flex;
+}
+
+.align-items-center {
+  align-items: center; /* Vertically align items */
+}
+
+/* Additional styling for spacing */
+.mascot-speaking {
+  margin-right: 0.75rem; /* Adjust the margin between the image and text */
+  height: 80vh;
+}
+
