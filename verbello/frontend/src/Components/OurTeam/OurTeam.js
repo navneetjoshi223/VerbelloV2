@@ -13,7 +13,7 @@ const teamMembers = [
   {
     id: 2,
     name: "Ashwin Nair",
-    email: "nair.ash@northeastern.edu",
+    email: "nair.ashw@northeastern.edu",
     imgSrc: "/images/team/ashwin.jpg",
   },
   {
