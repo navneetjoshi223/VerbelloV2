@@ -71,6 +71,11 @@ const Login = () => {
         const data = await response.json();
         if (response.ok) {
           //  alert(data.message);
+          if (data.user) {
+            window.sessionStorage.setItem('userId', data.user._id);
+            window.sessionStorage.setItem('userFullName', data.user.fullName);
+          }
+          
           navigate("/");
         } else {
           // alert(`Login failed: ${data.message}`);

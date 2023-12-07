@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import "./Navbar.css";
+import { handleLogout } from "../../../utils/loginStatus";
 //import verbelloLogo from "../../../assets/images/verbello-logo.jpeg";
 
-const Navbar = () => {
-
+const Navbar = (props) => {
   const [togglerColor, setTogglerColor] = useState("#ffffff");
   const [isNavCollapsed, setIsNavCollapsed] = useState(true);
 
@@ -25,12 +25,12 @@ const Navbar = () => {
         <button
           className={`navbar-toggler custom-toggler ${
             isNavCollapsed ? "" : "collapsed"
-          }`} 
+          }`}
           type="button"
           data-bs-toggle="collapse"
           data-bs-target="#navbarNavDropdown"
           aria-controls="navbarNavDropdown"
-          aria-expanded={!isNavCollapsed}  
+          aria-expanded={!isNavCollapsed}
           aria-label="Toggle navigation"
           style={{ borderColor: "#333" }}
           onClick={handleToggleClick}
@@ -57,17 +57,44 @@ const Navbar = () => {
             </li>
           </ul>
 
-          <Link to="/login" className="login">
-            <button type="button" className="btn btn-outline-light mx-1 mt-0">
-              Login
-            </button>
-          </Link>
+          {props.userFullName ? (
+            <>
+              <div class="dropdown">
+                <button
+                  class="btn btn-light dropdown-toggle mt-0"
+                  type="button"
+                  data-bs-toggle="dropdown"
+                  aria-expanded="false"
+                >
+                  {props.userFullName}
+                </button>
+                <ul class="dropdown-menu">
+                  <li>
+                    <a class="dropdown-item" href="#" onClick={handleLogout}>
+                      Log Out
+                    </a>
+                  </li>
+                </ul>
+              </div>
+            </>
+          ) : (
+            <>
+              <Link to="/login" className="login">
+                <button
+                  type="button"
+                  className="btn btn-outline-light mx-1 mt-0"
+                >
+                  Login
+                </button>
+              </Link>
 
-          <Link to="/signup" className="signup">
-            <button type="button" className="btn btn-light mx-1 mt-0">
-              Sign Up
-            </button>
-          </Link>
+              <Link to="/signup" className="signup">
+                <button type="button" className="btn btn-light mx-1 mt-0">
+                  Sign Up
+                </button>
+              </Link>
+            </>
+          )}
         </div>
       </div>
     </nav>

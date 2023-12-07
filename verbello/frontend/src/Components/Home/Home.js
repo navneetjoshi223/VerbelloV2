@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Navbar from "../common/Navbar/Navbar";
 import IntroCard from "../IntroCard/IntroCard";
 import "./Home.css";
@@ -14,9 +14,13 @@ const Home = () => {
     { language: "Italian", img: "./images/flags/italy.jpeg" },
   ];
 
+  // useEffect(() => {
+
+  // }, []);
+
   return (
     <>
-      <Navbar />
+      <Navbar userFullName={window.sessionStorage.getItem('userFullName')} />
       <IntroCard />
       <div className="card languages-offered m-3 p-3">
         <div className="card-body">
