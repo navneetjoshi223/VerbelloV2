@@ -10,10 +10,11 @@ import Signup from "./Components/Signup/Signup";
 import Userprofile from './Components/UserProfile/Userprofile';
 import Lesson from './Components/Lesson/Lesson';
 
-
+import Admin from "./Components/Admin/Admin";
 
 
 import ContactUs from './Components/ContactUs/ContactUs';
+import OurTeam from './Components/OurTeam/OurTeam';
 import { loginStatus } from "./utils/loginStatus";
 import LessonContent from "./Components/Lesson/LessonContent";
 const App = () => {
@@ -47,6 +48,8 @@ const App = () => {
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<Signup />} />
           <Route path="/contactUs" element={<ContactUs />} />
+          <Route path="/ourTeam" element={<OurTeam />} />
+          <Route path="/admin" element={<Admin />} />
           {/* Add a wildcard route to redirect to the home page for unknown routes */}
           <Route path="*" element={<Navigate to="/" />} />
           
