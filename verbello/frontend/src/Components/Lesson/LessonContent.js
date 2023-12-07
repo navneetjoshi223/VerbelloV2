@@ -1,131 +1,66 @@
-import React , {useState} from 'react';
+import React , {useEffect, useState} from 'react';
 import DisplayImage from './DisplayImage';
-import { Link } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
+import axios from "axios";
 import './DisplayImage.css';
 
-const lessonsData = {
-  Colors: [
-    { imageUrl: '/images/lessons/colors/blue.png', spanishName: 'Nombre en español 1' },
-    { imageUrl: '/images/lessons/colors/green.png', spanishName: 'Nombre en español 2' },
-    { imageUrl: '/images/lessons/colors/orange.png', spanishName: 'Nombre en español 3' },
-    { imageUrl: '/images/lessons/colors/pink.png', spanishName: 'Nombre en español 4' },
-    { imageUrl: '/images/lessons/colors/purple.png', spanishName: 'Nombre en español 5' },
-    { imageUrl: '/images/lessons/colors/red.png', spanishName: 'Nombre en español 6' },
-    { imageUrl: '/images/lessons/colors/turqoise.png', spanishName: 'Nombre en español 7' },
-    { imageUrl: '/images/lessons/colors/yellow.png', spanishName: 'Nombre en español 8' },
-  ],
-  Fruits: [
-    { imageUrl: '/images/lessons/fruits/avocado.jpg', spanishName: 'Nombre en español 1' },
-    { imageUrl: '/images/lessons/fruits/banana.webp', spanishName: 'Nombre en español 2' },
-    { imageUrl: '/images/lessons/fruits/cherry.jpg', spanishName: 'Nombre en español 3' },
-    { imageUrl: '/images/lessons/fruits/oranges.jpg', spanishName: 'Nombre en español 4' },
-    { imageUrl: '/images/lessons/fruits/papaya.jpg', spanishName: 'Nombre en español 5' },
-    { imageUrl: '/images/lessons/fruits/pineapple.jpg', spanishName: 'Nombre en español 6' },
-    { imageUrl: '/images/lessons/fruits/strawberry.jpg', spanishName: 'Nombre en español 7' },
-    { imageUrl: '/images/lessons/fruits/watermelon.jpg', spanishName: 'Nombre en español 8' },
-  ],
-  Vegetables: [
-    { imageUrl: 'fruit1.jpg', spanishName: 'Nombre en español 1' },
-    { imageUrl: 'fruit2.jpg', spanishName: 'Nombre en español 2' },
-    { imageUrl: 'color2.jpg', spanishName: 'Nombre en español 3' },
-    { imageUrl: 'color2.jpg', spanishName: 'Nombre en español 4' },
-    { imageUrl: 'color2.jpg', spanishName: 'Nombre en español 5' },
-    { imageUrl: 'color2.jpg', spanishName: 'Nombre en español 6' },
-    { imageUrl: 'color2.jpg', spanishName: 'Nombre en español 7' },
-    { imageUrl: 'color2.jpg', spanishName: 'Nombre en español 8' },
-  ],
-  Birds : [
-    { imageUrl: 'fruit1.jpg', spanishName: 'Nombre en español 1' },
-    { imageUrl: 'fruit2.jpg', spanishName: 'Nombre en español 2' },
-    { imageUrl: 'color2.jpg', spanishName: 'Nombre en español 3' },
-    { imageUrl: 'color2.jpg', spanishName: 'Nombre en español 4' },
-    { imageUrl: 'color2.jpg', spanishName: 'Nombre en español 5' },
-    { imageUrl: 'color2.jpg', spanishName: 'Nombre en español 6' },
-    { imageUrl: 'color2.jpg', spanishName: 'Nombre en español 7' },
-    { imageUrl: 'color2.jpg', spanishName: 'Nombre en español 8' },
-  ],
-  Animals: [
-    { imageUrl: 'fruit1.jpg', spanishName: 'Nombre en español 1' },
-    { imageUrl: 'fruit2.jpg', spanishName: 'Nombre en español 2' },
-    { imageUrl: 'color2.jpg', spanishName: 'Nombre en español 3' },
-    { imageUrl: 'color2.jpg', spanishName: 'Nombre en español 4' },
-    { imageUrl: 'color2.jpg', spanishName: 'Nombre en español 5' },
-    { imageUrl: 'color2.jpg', spanishName: 'Nombre en español 6' },
-    { imageUrl: 'color2.jpg', spanishName: 'Nombre en español 7' },
-    { imageUrl: 'color2.jpg', spanishName: 'Nombre en español 8' },
-  ],
-  Tenses: [
-    { imageUrl: '/images/lessons/fruits/avocado.jpg', spanishName: 'Nombre en español 1' },
-    { imageUrl: '/images/lessons/fruits/avocado.jpg', spanishName: 'Nombre en español 2' },
-    { imageUrl: '/images/lessons/fruits/avocado.jpg', spanishName: 'Nombre en español 3' },
-    { imageUrl: '/images/lessons/fruits/avocado.jpg', spanishName: 'Nombre en español 4' },
-    { imageUrl: '/images/lessons/fruits/avocado.jpg', spanishName: 'Nombre en español 5' },
-    { imageUrl: '/images/lessons/fruits/avocado.jpg', spanishName: 'Nombre en español 6' },
-    { imageUrl: '/images/lessons/fruits/avocado.jpg', spanishName: 'Nombre en español 7' },
-    { imageUrl: '/images/lessons/fruits/avocado.jpg', spanishName: 'Nombre en español 8' },
-  ],
-  Articles: [
-    { imageUrl: '/images/lessons/fruits/avocado.jpg', spanishName: 'Nombre en español 1' },
-    { imageUrl: '/images/lessons/fruits/avocado.jpg', spanishName: 'Nombre en español 2' },
-    { imageUrl: '/images/lessons/fruits/avocado.jpg', spanishName: 'Nombre en español 3' },
-    { imageUrl: '/images/lessons/fruits/avocado.jpg', spanishName: 'Nombre en español 4' },
-    { imageUrl: '/images/lessons/fruits/avocado.jpg', spanishName: 'Nombre en español 5' },
-    { imageUrl: '/images/lessons/fruits/avocado.jpg', spanishName: 'Nombre en español 6' },
-    { imageUrl: '/images/lessons/fruits/avocado.jpg', spanishName: 'Nombre en español 7' },
-    { imageUrl: '/images/lessons/fruits/avocado.jpg', spanishName: 'Nombre en español 8' },
-  ],
-  Adjectives: [
-    { imageUrl: './images/lessons/fruits/avocado.jpg', spanishName: 'Nombre en español 1' },
-    { imageUrl: './images/lessons/fruits/avocado.jpg', spanishName: 'Nombre en español 2' },
-    { imageUrl: './images/lessons/fruits/avocado.jpg', spanishName: 'Nombre en español 3' },
-    { imageUrl: './images/lessons/fruits/avocado.jpg', spanishName: 'Nombre en español 4' },
-    { imageUrl: './images/lessons/fruits/avocado.jpg', spanishName: 'Nombre en español 5' },
-    { imageUrl: './images/lessons/fruits/avocado.jpg', spanishName: 'Nombre en español 6' },
-    { imageUrl: './images/lessons/fruits/avocado.jpg', spanishName: 'Nombre en español 7' },
-    { imageUrl: './images/lessons/fruits/avocado.jpg', spanishName: 'Nombre en español 8' },
-  ],
-  Preposition: [
-    { imageUrl: './images/lessons/fruits/avocado.jpg', spanishName: 'Nombre en español 1' },
-    { imageUrl: './images/lessons/fruits/avocado.jpg', spanishName: 'Nombre en español 2' },
-    { imageUrl: './images/lessons/fruits/avocado.jpg', spanishName: 'Nombre en español 3' },
-    { imageUrl: './images/lessons/fruits/avocado.jpg', spanishName: 'Nombre en español 4' },
-    { imageUrl: './images/lessons/fruits/avocado.jpg', spanishName: 'Nombre en español 5' },
-    { imageUrl: './images/lessons/fruits/avocado.jpg', spanishName: 'Nombre en español 6' },
-    { imageUrl: './images/lessons/fruits/avocado.jpg', spanishName: 'Nombre en español 7' },
-    { imageUrl: './images/lessons/fruits/avocado.jpg', spanishName: 'Nombre en español 8' },
-  ]
- 
-};
+
+const LessonContent = () => {
+
+  const [lessonContent, setLessonContent] = useState([]);
+  const { language, lessonName } = useParams();
+
+  useEffect(() => {
+    //Make API call to fetch lesson data from MongoDB
+    console.log(language, lessonName, "language & lesson name from params");
+      let fetchLessonContent = async () => {
+        let lesson = lessonName;
+        let result = await axios.get("http://localhost:2000/api/qna/lessondata", {
+          params: {
+            language,
+            lesson,
+          }
+        });
+
+        let lessonContent = result.data.data;
+        console.log("lesson content:", lessonContent);
+        setLessonContent(lessonContent);
+      };
+  
+      fetchLessonContent();
+  }, [language, lessonName]);
 
 
-const LessonContent = ({ lessonName }) => {
-  const imagesData = lessonsData[lessonName] || [];
+  //const imagesData = lessonsData[lessonName] || [];
   const [clickedImages, setClickedImages] = useState(new Set());
 
-  const handleImageClick = (spanishName) => {
+  const handleImageClick = (originalText) => {
     const updatedClickedImages = new Set(clickedImages);
-    updatedClickedImages.add(spanishName);
+    updatedClickedImages.add(originalText);
     setClickedImages(updatedClickedImages);
   };
 
   
-
-  const allImagesClicked = imagesData.every((image) => clickedImages.has(image.spanishName));
+  //logic to enable button if all images clicked  (by aum)
+  const allImagesClicked = lessonContent.every((image) => clickedImages.has(image.text));
 
   return (
     <>
     <h2>{lessonName}</h2>
     <div className="image-container">
-    {imagesData.map((imageData, index) => (
+    {lessonContent.map((imageData, index) => (
       <div>
       <DisplayImage
         key={index}
         imageUrl={imageData.imageUrl}
-        spanishName={imageData.spanishName}
+        originalText={imageData.text}
+        englishName={imageData.englishTranslation}
+        description={imageData.description}
+        engDescription={imageData.engDescription}
         handleImageClick={handleImageClick}
-        isClicked={clickedImages.has(imageData.spanishName)}
+        isClicked={clickedImages.has(imageData.text)}
       />
-      <p>{imageData.spanishName}</p>
+      <p>{imageData.text}</p>
       </div>
     ))}
   </div>

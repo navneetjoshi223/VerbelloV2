@@ -1,17 +1,16 @@
 import React, { useEffect, useState } from 'react';
-import { Route,Routes, Link,Navigate ,useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import Navbar from "../common/Navbar/Navbar";
 import Footer from "../common/Footer/Footer";
 import './Lesson.css';
 import UnitLesson from './UnitLesson';
-
-
 import LessonContent from './LessonContent';
 
 
 function Lesson() {
     const [selectedLesson, setSelectedLesson] = useState(null);
     const [donelesson , setdonelesson] = useState({});
+    const { language } = useParams();
     const navigate = useNavigate();
     useEffect(() => {
     let  completedlesson=localStorage.getItem("completedlesson")
@@ -24,101 +23,7 @@ function Lesson() {
     }
  
     setdonelesson(completedlesson)
-    },[]) 
-
-    // const lessonsData = [{
-    //   Colors: [
-    //     { imageUrl: blueImage, spanishName: 'Nombre en español 1' },
-    //     { imageUrl: greenImage, spanishName: 'Nombre en español 2' },
-    //     { imageUrl: orangeImage, spanishName: 'Nombre en español 3' },
-    //     { imageUrl: yellowImage, spanishName: 'Nombre en español 4' },
-    //     { imageUrl: pinkImage, spanishName: 'Nombre en español 5' },
-    //     { imageUrl: purpleImage, spanishName: 'Nombre en español 6' },
-    //     { imageUrl: redImage, spanishName: 'Nombre en español 7' },
-    //     { imageUrl: turqoiseImage, spanishName: 'Nombre en español 8' },
-    //   ],
-    //   Fruits: [
-    //     { imageUrl: avocadoImage, spanishName: 'Nombre en español 1' },
-    //     { imageUrl: bananaImage, spanishName: 'Nombre en español 2' },
-    //     { imageUrl: cherryImage, spanishName: 'Nombre en español 3' },
-    //     { imageUrl: orangesImage, spanishName: 'Nombre en español 4' },
-    //     { imageUrl: papayaImage, spanishName: 'Nombre en español 5' },
-    //     { imageUrl: pineappleImage, spanishName: 'Nombre en español 6' },
-    //     { imageUrl: watermelonImage, spanishName: 'Nombre en español 7' },
-    //     { imageUrl: strawberryImage, spanishName: 'Nombre en español 8' },
-    //   ],
-    //   Vegetables: [
-    //     { imageUrl: 'fruit1.jpg', spanishName: 'Nombre en español 1' },
-    //     { imageUrl: 'fruit2.jpg', spanishName: 'Nombre en español 2' },
-    //     { imageUrl: 'color2.jpg', spanishName: 'Nombre en español 3' },
-    //     { imageUrl: 'color2.jpg', spanishName: 'Nombre en español 4' },
-    //     { imageUrl: 'color2.jpg', spanishName: 'Nombre en español 5' },
-    //     { imageUrl: 'color2.jpg', spanishName: 'Nombre en español 6' },
-    //     { imageUrl: 'color2.jpg', spanishName: 'Nombre en español 7' },
-    //     { imageUrl: 'color2.jpg', spanishName: 'Nombre en español 8' },
-    //   ],
-    //   Birds : [
-    //     { imageUrl: 'fruit1.jpg', spanishName: 'Nombre en español 1' },
-    //     { imageUrl: 'fruit2.jpg', spanishName: 'Nombre en español 2' },
-    //     { imageUrl: 'color2.jpg', spanishName: 'Nombre en español 3' },
-    //     { imageUrl: 'color2.jpg', spanishName: 'Nombre en español 4' },
-    //     { imageUrl: 'color2.jpg', spanishName: 'Nombre en español 5' },
-    //     { imageUrl: 'color2.jpg', spanishName: 'Nombre en español 6' },
-    //     { imageUrl: 'color2.jpg', spanishName: 'Nombre en español 7' },
-    //     { imageUrl: 'color2.jpg', spanishName: 'Nombre en español 8' },
-    //   ],
-    //   Animals: [
-    //     { imageUrl: 'fruit1.jpg', spanishName: 'Nombre en español 1' },
-    //     { imageUrl: 'fruit2.jpg', spanishName: 'Nombre en español 2' },
-    //     { imageUrl: 'color2.jpg', spanishName: 'Nombre en español 3' },
-    //     { imageUrl: 'color2.jpg', spanishName: 'Nombre en español 4' },
-    //     { imageUrl: 'color2.jpg', spanishName: 'Nombre en español 5' },
-    //     { imageUrl: 'color2.jpg', spanishName: 'Nombre en español 6' },
-    //     { imageUrl: 'color2.jpg', spanishName: 'Nombre en español 7' },
-    //     { imageUrl: 'color2.jpg', spanishName: 'Nombre en español 8' },
-    //   ]},{
-    //   Tenses: [
-    //     { imageUrl: avocadoImage, spanishName: 'Nombre en español 1' },
-    //     { imageUrl: bananaImage, spanishName: 'Nombre en español 2' },
-    //     { imageUrl: cherryImage, spanishName: 'Nombre en español 3' },
-    //     { imageUrl: orangesImage, spanishName: 'Nombre en español 4' },
-    //     { imageUrl: papayaImage, spanishName: 'Nombre en español 5' },
-    //     { imageUrl: pineappleImage, spanishName: 'Nombre en español 6' },
-    //     { imageUrl: watermelonImage, spanishName: 'Nombre en español 7' },
-    //     { imageUrl: strawberryImage, spanishName: 'Nombre en español 8' },
-    //   ],
-    //   Articles: [
-    //     { imageUrl: avocadoImage, spanishName: 'Nombre en español 1' },
-    //     { imageUrl: bananaImage, spanishName: 'Nombre en español 2' },
-    //     { imageUrl: cherryImage, spanishName: 'Nombre en español 3' },
-    //     { imageUrl: orangesImage, spanishName: 'Nombre en español 4' },
-    //     { imageUrl: papayaImage, spanishName: 'Nombre en español 5' },
-    //     { imageUrl: pineappleImage, spanishName: 'Nombre en español 6' },
-    //     { imageUrl: watermelonImage, spanishName: 'Nombre en español 7' },
-    //     { imageUrl: strawberryImage, spanishName: 'Nombre en español 8' },
-    //   ],
-    //   Adjectives: [
-    //     { imageUrl: avocadoImage, spanishName: 'Nombre en español 1' },
-    //     { imageUrl: bananaImage, spanishName: 'Nombre en español 2' },
-    //     { imageUrl: cherryImage, spanishName: 'Nombre en español 3' },
-    //     { imageUrl: orangesImage, spanishName: 'Nombre en español 4' },
-    //     { imageUrl: papayaImage, spanishName: 'Nombre en español 5' },
-    //     { imageUrl: pineappleImage, spanishName: 'Nombre en español 6' },
-    //     { imageUrl: watermelonImage, spanishName: 'Nombre en español 7' },
-    //     { imageUrl: strawberryImage, spanishName: 'Nombre en español 8' },
-    //   ],
-    //   Preposition: [
-    //     { imageUrl: avocadoImage, spanishName: 'Nombre en español 1' },
-    //     { imageUrl: bananaImage, spanishName: 'Nombre en español 2' },
-    //     { imageUrl: cherryImage, spanishName: 'Nombre en español 3' },
-    //     { imageUrl: orangesImage, spanishName: 'Nombre en español 4' },
-    //     { imageUrl: papayaImage, spanishName: 'Nombre en español 5' },
-    //     { imageUrl: pineappleImage, spanishName: 'Nombre en español 6' },
-    //     { imageUrl: watermelonImage, spanishName: 'Nombre en español 7' },
-    //     { imageUrl: strawberryImage, spanishName: 'Nombre en español 8' },
-    //   ]
-     
-    // }];
+    },[])
 
     const lessonsData = [
       {
@@ -306,7 +211,8 @@ function Lesson() {
 
       const handleLessonClick = (lessonName) => {
       setSelectedLesson(lessonName);
-      navigate(`/lesson/${lessonName}`);
+      const lessonNameinSmallCaps = lessonName.toLowerCase();
+      navigate(`/lesson/${language}/${lessonNameinSmallCaps}`);
     };
   
     return (
@@ -315,7 +221,7 @@ function Lesson() {
        <div className="App">
           <h2>Learn Units</h2>
           {selectedLesson ? (
-            <LessonContent lessonName={selectedLesson} />
+            <LessonContent />
          ) : (
             lessonsData.map((unit, index) => (
               <div key={index}>

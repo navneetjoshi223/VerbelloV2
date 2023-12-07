@@ -15,6 +15,7 @@ import Lesson from './Components/Lesson/Lesson';
 
 import ContactUs from './Components/ContactUs/ContactUs';
 import { loginStatus } from "./utils/loginStatus";
+import LessonContent from "./Components/Lesson/LessonContent";
 const App = () => {
   const [user, setUser] = useState({});
 
@@ -43,22 +44,15 @@ const App = () => {
         <Routes>
           <Route path="/" exact element={<Home />} />
           <Route path="/quiz/:language/:lessonName" element={<QuizQuestions />} />
-          {/* <Route path="/quiz" element={<QuizQuestions questions={questions} />} /> */}
-          {/* <Route path="/login" element={<Login/>} />
-          <Route path="/signup" element={<SignUp />} />
-          <Route path="/aboutus" element={<AboutUs />} />
-          <Route path="/contactus" element={<ContactUs />} />
-          <Route path="/quiz" element={<Quiz />} />
-          <Route path="/lesson" element={<Lesson />} />
-          <Route path="/profile" element={<Profile />} /> */}
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<Signup />} />
           <Route path="/contactUs" element={<ContactUs />} />
           {/* Add a wildcard route to redirect to the home page for unknown routes */}
           <Route path="*" element={<Navigate to="/" />} />
-
+          
           <Route path="/userprofile" element={<Userprofile />} />
           <Route path="/lesson/:language" element={<Lesson />} />
+          <Route path="/lesson/:language/:lessonName" element={<LessonContent />} />
         </Routes>
       </BrowserRouter>
     </div>

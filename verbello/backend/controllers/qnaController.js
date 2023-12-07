@@ -31,18 +31,19 @@ async function fetchQuestion(req, res) {
     res.status(401).json({ message: error.message });
   }
 }
-// async function fetchLesson(req, res) {
-//   const { language,lesson } = req.body;
-//   console.log(language,lesson,'CRED')
-//   try {
-//     const quizData = await qnaService.getQuizData(language,lesson)
-//     res.json({status:200, data:quizData });
-//   } catch (error) {
-//     console.error(error.message,"IIIII");
-//     res.status(401).json({ message: error.message });
-//   }
-// }
+
+async function fetchLesson(req, res) {
+  const { language,lesson } = req.query;
+  console.log(language,lesson,'CRED')
+  try {
+    const lessonData = await qnaService.getLessonData(language,lesson)
+    res.json({status:200, data:lessonData });
+  } catch (error) {
+    console.error(error.message,"IIIII");
+    res.status(401).json({ message: error.message });
+  }
+}
 
 module.exports = {
-  check,fetchQuestion
+  check,fetchQuestion, fetchLesson
 };
