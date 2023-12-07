@@ -9,7 +9,6 @@ const Navbar = () => {
   const [isNavCollapsed, setIsNavCollapsed] = useState(true);
 
   const handleToggleClick = () => {
-    // Toggle the color between white and green
     const newColor = togglerColor === "#ffffff" ? "#00ff00" : "#ffffff";
     setTogglerColor(newColor);
     setIsNavCollapsed(!isNavCollapsed);
@@ -33,7 +32,7 @@ const Navbar = () => {
           aria-controls="navbarNavDropdown"
           aria-expanded={!isNavCollapsed}  
           aria-label="Toggle navigation"
-          style={{ backgroundColor: togglerColor, borderColor: "#333" }}
+          style={{ borderColor: "#333" }}
           onClick={handleToggleClick}
         >
           <span className="navbar-toggler-icon"></span>
@@ -42,10 +41,10 @@ const Navbar = () => {
         <div
           className={`collapse navbar-collapse justify-content-end ${
             isNavCollapsed ? "" : "show"
-          }`}
+          } order-md-last`}
           id="navbarNavDropdown"
         >
-          <ul className="navbar-nav ms-auto mb-lg-0">
+          <ul className="navbar-nav ms-auto mb-2 mb-lg-0">
             <li className="nav-item">
               <Link to="/contactus" className="nav-link text-white">
                 Contact Us
