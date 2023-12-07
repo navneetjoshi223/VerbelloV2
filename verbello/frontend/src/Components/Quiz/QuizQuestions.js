@@ -12,6 +12,21 @@ const QuizQuestions = () => {
 
   const location = useLocation();
 
+  useEffect(() => {
+    // Add or remove a class based on the location
+    const body = document.body;
+    if (location.pathname === '/quiz') {
+      body.classList.add('quiz-page');
+    } else {
+      body.classList.remove('quiz-page');
+    }
+
+    // Cleanup effect
+    return () => {
+      body.classList.remove('quiz-page');
+    };
+  }, [location.pathname]);
+
   const handleOptionClick = (optionIndex) => {
     if (!showCorrectAnswer) {
       setSelectedOption(optionIndex);
@@ -86,17 +101,9 @@ const QuizQuestions = () => {
   const handleCompleteQuiz = () => {
     console.log('Quiz Completed!');
   };
-
-  useEffect(() => {
-    if (location.pathname === '/quiz') {
-      document.body.classList.add('quiz-background');
-    } else {
-      document.body.classList.remove('quiz-background');
-    }
-  }, [location.pathname]);
-
+  
   return (
-    <div className="card mx-auto mt-5" style={{ height: '500px', width: '400px' }}>
+    <div className="quiz-container card mx-auto mt-5" style={{ height: '500px', width: '400px' }}>
       <div className="card-body">
         <div className="question font-weight-bold">
           Question {currentQuestion + 1} of {questions.length}
@@ -118,7 +125,7 @@ const QuizQuestions = () => {
           <button
             onClick={handleCompleteQuiz}
             className="btn btn-success mt-3"
-          >
+          > 
             Complete Quiz
           </button>
         )}
