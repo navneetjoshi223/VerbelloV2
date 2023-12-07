@@ -23,3 +23,9 @@
           console.error("Error checking login status:", error);
         }
       };
+
+export const handleLogout = () => {
+  console.log('Logout attempted');
+  window.sessionStorage.removeItem('userId');
+  window.sessionStorage.removeItem('userFullName');
+};
