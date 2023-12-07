@@ -8,10 +8,7 @@ import Login from './Components/Login/Login';
 import Signup from './Components/Signup/Signup';
 import Userprofile from './Components/UserProfile/Userprofile';
 import Lesson from './Components/Lesson/Lesson';
-
-
-
-
+import ContactUs from './Components/ContactUs/ContactUs';
 
 const App = () => {
   return (
@@ -20,6 +17,7 @@ const App = () => {
         <Routes>
           <Route path="/" exact element={<Home />} />
           <Route path="/quiz/:lessonName" element={<QuizQuestions />} />
+          <Route path="/contactUs" element={<ContactUs />} />
           {/* <Route path="/quiz" element={<QuizQuestions questions={questions} />} /> */}
           {/* <Route path="/login" element={<Login/>} />
           <Route path="/signup" element={<SignUp />} />
