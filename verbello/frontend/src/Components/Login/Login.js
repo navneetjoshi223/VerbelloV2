@@ -133,8 +133,8 @@ const Login = () => {
     >
       <div className="card p-4" style={{ width: "24rem" }}>
         <h1 className="card-title text-center mb-4">Login</h1>
-        <button type="button" class="btn" onClick={()=>checkApi()}>Base class</button>
-        <button type="button" class="btn" onClick={()=>checklogout()}>Logout</button>
+        <button type="button" className="btn" onClick={()=>checkApi()}>Base class</button>
+        <button type="button" className="btn" onClick={()=>checklogout()}>Logout</button>
         {!isLoginValid && (
           <h4 className=" text-center m2-4 text-danger">Invalid Credentials!</h4>
         )}
