@@ -12,7 +12,7 @@ import Lesson from './Components/Lesson/Lesson';
 
 import Admin from "./Components/Admin/Admin";
 
-
+import AboutUs from "./Components/AboutUs/AboutUs";
 import ContactUs from './Components/ContactUs/ContactUs';
 import OurTeam from './Components/OurTeam/OurTeam';
 import { loginStatus } from "./utils/loginStatus";
@@ -49,6 +49,7 @@ const App = () => {
           <Route path="/signup" element={<Signup />} />
           <Route path="/contactUs" element={<ContactUs />} />
           <Route path="/ourTeam" element={<OurTeam />} />
+          <Route path="/aboutus" element={<AboutUs />} />
           <Route path="/admin" element={<Admin />} />
           {/* Add a wildcard route to redirect to the home page for unknown routes */}
           <Route path="*" element={<Navigate to="/" />} />
