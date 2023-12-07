@@ -9,6 +9,10 @@ import silver from "../../assets/images/Badges/silve.jpeg";
 import bronze from "../../assets/images/Badges/bronz.jpeg";
 import Button from "react-bootstrap/Button";
 import axios from "axios";
+import { Link } from 'react-router-dom';
+
+
+
 
 import "./UserProfile.css"; // Import the CSS file for user profile styling
 

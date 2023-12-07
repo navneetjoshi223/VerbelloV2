@@ -43,7 +43,7 @@ const QuizQuestions = (props) => {
 
   const handleGoToProfile = () => {
     // Navigate to the Lesson component and pass the lessonName as a parameter
-    navigate(`/lesson`);
+    navigate(`/lesson/${language}`);
   };
 
 
