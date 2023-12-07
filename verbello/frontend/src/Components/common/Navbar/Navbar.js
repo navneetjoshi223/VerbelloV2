@@ -11,6 +11,20 @@ const Navbar = () => {
           <span className="logo-txt">Verbello</span>
           {/* <img src={verbelloLogo} className="img-fluid logo" alt="Verbello" /> */}
         </Link>
+
+        <button
+          className="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNavDropdown"
+          aria-controls="navbarNavDropdown"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span className="navbar-toggler-icon"></span>
+        </button>
+
+
         <div
           className="collapse navbar-collapse justify-content-end"
           id="navbarNavDropdown"
