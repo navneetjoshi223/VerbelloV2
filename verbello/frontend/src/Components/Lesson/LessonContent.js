@@ -11,24 +11,31 @@ const LessonContent = () => {
   const { language, lessonName } = useParams();
 
   useEffect(() => {
-    //Make API call to fetch lesson data from MongoDB
+    // Make API call to fetch lesson data from MongoDB
     console.log(language, lessonName, "language & lesson name from params");
+  
     let fetchLessonContent = async () => {
-      let lesson = lessonName;
-      let result = await axios.get("http://localhost:2000/api/qna/lessondata", {
-        params: {
-          language,
-          lesson,
-        },
-      });
-
-      let lessonContent = result.data.data;
-      console.log("lesson content:", lessonContent);
-      setLessonContent(lessonContent);
+      try {
+        let lesson = lessonName;
+        let result = await axios.get("http://localhost:2000/api/qna/lessondata", {
+          params: {
+            language,
+            lesson,
+          }
+        });
+  
+        let lessonContent = result.data.data;
+        console.log("lesson content:", lessonContent);
+        setLessonContent(lessonContent);
+      } catch (error) {
+        console.error("Error fetching lesson data:", error);
+        // Handle the error, you can set an error state or log it as needed
+      }
     };
-
+  
     fetchLessonContent();
   }, [language, lessonName]);
+  
 
   const [clickedImages, setClickedImages] = useState(new Set());
 

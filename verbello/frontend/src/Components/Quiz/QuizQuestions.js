@@ -126,27 +126,28 @@ const QuizQuestions = (props) => {
     );
   };
 
-  const handleCompleteQuiz = () => {
+  const handleCompleteQuiz = async() => {
     console.log("Quiz Completed!");
     setIsQuizCompleted(true);
     playLessonCompletedAudio();
-    let  completedlesson=localStorage.getItem("completedlesson")
 
-    if(!completedlesson){
-          completedlesson ={}
-    }
-    else{
-      completedlesson= JSON.parse(completedlesson)
-    }
+    
+      try {
+        await axios.post("http://localhost:2000/api/users/completelesson", {
+          _id: window.sessionStorage.getItem("userId"),
+          language: language,
+        });
+      } catch (e) {
+        console.log(e);
+      }
+    };
 
-    completedlesson[lessonName] = true 
-    localStorage.setItem('completedlesson',JSON.stringify(completedlesson))
 
 
 
     
     //make api call to user and update lessons completed info
-  };
+  
 
   return (
     <>
