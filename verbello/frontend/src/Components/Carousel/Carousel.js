@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import './Carousel.css'; // Import your custom carousel CSS
+import './Carousel.css'; 
 
 const Carousel = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
