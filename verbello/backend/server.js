@@ -43,6 +43,15 @@ const corsOptions = {
   credentials: true, // Allow credentials (cookies)
   // credentials: 'include',
 };
+
+app.use(function (req, res, next) {
+  res.header("Access-Control-Allow-Origin", req.headers.origin);
+  res.header("Access-Control-Allow-Methods", "GET, POST, PUT");
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+  res.header("Access-Control-Allow-Credentials", "true");
+  next();
+});
+
 app.use(cors(corsOptions));
 
 axios.default.withCredentials = true;
