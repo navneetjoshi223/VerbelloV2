@@ -59,11 +59,11 @@
 }
 
 .correct {
-  background-color: #42d042;
+  background-color: #57eb57;
 }
 
 .incorrect {
-  background-color: #f44747;
+  background-color: #fb5555;
 }
 
 .button-container {
@@ -105,4 +105,13 @@ button:hover {
   /* background-color: #f8fefd; */
   background-size: cover; 
   background-attachment: fixed;
+}
+
+.alert-success {
+  width: 50%;
+  background-color: #95ff95;
+}
+
+.alert-danger {
+  width: 50%;
 }
