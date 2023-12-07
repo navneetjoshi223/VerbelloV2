@@ -2,31 +2,80 @@ const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors'); 
 const routes = require('./routes/routes');
+const axios=require("axios");
+const allowedOrigins = ["http://localhost:3001", "http://localhost:3000","http://localhost:3000/email","localhost"]; // Add your actual domain here
+
+
+
+
+const bodyParser = require("body-parser");
+const bcrypt = require("bcrypt");
+const app = express();
+
+
+
+const cookieParser=require("cookie-parser")
+app.use(cookieParser());
+app.use(bodyParser.json());
+
+
+
 
 
 const session = require('express-session');
 const MongoStore = require('connect-mongo');
 
-const app = express();
+
 const port = 2000; // Change as needed
 
 // Connect to MongoDB
-mongoose.connect('mongodb://localhost:27017/Final_Project');
-app.use(cors()); 
+mongoose.connect('mongodb://localhost:27017/Final_Project1');
+
+const corsOptions = {
+  origin: function (origin, callback) {
+    if (!origin || allowedOrigins.includes(origin)) {
+      callback(null, true);
+    } else {
+      callback(new Error('Not allowed by CORS'));
+    }
+  },
+  methods: ["POST","GET","PUT"],
+  credentials: true, // Allow credentials (cookies)
+  // credentials: 'include',
+};
+app.use(cors(corsOptions));
+
+axios.default.withCredentials = true;
 
 app.use(express.json());
 
-// Configure express-session and connect-mongo for session management
-app.use(session({
-  secret: '1965', // Change this to a secure secret key
-  resave: false,
-  saveUninitialized: false,
-  store: MongoStore.create({
-    mongoUrl: 'mongodb://localhost:27017/Final_Project',
 
-  }),
-  cookie: { maxAge: 1000 * 60 * 60 * 24 }, // Session cookie lasts for 1 day
-}));
+
+// Configure express-session and connect-mongo for session management
+// app.use(session({
+//   secret: '1965', // Change this to a secure secret key
+//   resave: false,
+//   saveUninitialized: false,
+//   store: MongoStore.create({
+//     mongoUrl: 'mongodb://localhost:27017/Final_Project',
+
+//   }),
+//   cookie: { maxAge: 1000 * 60 * 60 * 24 }, // Session cookie lasts for 1 day
+// }));
+
+app.use(
+  session({
+    name: "cookie.sid",
+    secret: "key777",
+    secure: false,
+    maxAge: 1000 * 60 * 60 * 7,
+    resave: false,
+    saveUninitialized: false,
+    store: MongoStore.create({
+      mongoUrl: "mongodb://localhost:27017/Final_Project1",
+    }),
+  })
+);
 
 // Custom middleware to check if the user is authenticated
 // const authenticateUser = (req, res, next) => {
@@ -41,8 +90,13 @@ app.use(session({
 
 
 
+
+
+
 // Use the user router
 app.use('/api', routes);
+
+
 
 app.listen(port, () => {
   console.log(`Server is running on port ${port}`);

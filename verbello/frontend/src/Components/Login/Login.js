@@ -1,7 +1,9 @@
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from 'axios'
 import "./Login.css";
+import { loginStatus } from "../../utils/loginStatus";
+
 
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -11,7 +13,22 @@ const Login = () => {
   const [isPasswordValid, setIsPasswordValid] = useState(true);
   const [isLoading, setIsLoading] = useState(false);
   const [isLoginValid, setIsLoginValid] = useState(true);
+  const [user, setUser] = useState(null);
   const navigate = useNavigate();
+
+  useEffect(()=>{
+    const fetchDataAsync = async () => {
+      try {
+        const result = await loginStatus();
+        setUser(result._id)
+        console.log(result)
+      } catch (error) {
+        console.log(error)
+      }
+    };
+
+    fetchDataAsync();
+  },[])
 
   const validateEmail = (email) => {
     // Perform email validation logic (e.g., basic format check)
@@ -34,40 +51,78 @@ const Login = () => {
     // Perform final validation and submit the form if everything is valid
     e.preventDefault();
     setIsLoading(true);
-
+  
     setIsEmailValid(validateEmail(email));
     setIsPasswordValid(!!password);
     if (isEmailValid && isPasswordValid) {
       // Perform signup logic
-      console.log("Lets  go");
-
-      const response = await axios.post(
-        "http://localhost:2000/api/users/login",
-        { email, password }
-      );
-
-      if (response.status === 200) {
-        // navigate("/Home");
-      } else {
-        setIsLoginValid(false);
+      console.log("Lets go");
+  
+      try {
+        const response = await fetch("http://localhost:2000/api/users/login", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          credentials: 'include',
+          body: JSON.stringify({ email, password }),
+        });
+  
+        const data = await response.json();
+        if (response.ok) {
+          //  alert(data.message);
+          navigate("/");
+        } else {
+          // alert(`Login failed: ${data.message}`);
+          console.log('Failed');
+        }
+      } catch (error) {
+        console.error("Error during login:", error);
+        alert("An error occurred during login.");
       }
     } else {
       // Display an error message or prevent form submission
     }
     setIsLoading(false);
   };
-  const checkApi=async()=>{
-    console.log('Insiede')
-    let response
-    try{
-    response = await axios.post(
-        "http://localhost:2000/api/qna/check", { withCredentials: true },
-        
-      )}catch(e){
-        console.log(e,'ERR')
-      }
-      console.log(response,'RES')
-  }
+  
+  const checkApi = async () => {
+    console.log('Inside');
+    let response;
+  
+    try {
+      response = await fetch("http://localhost:2000/api/qna/check", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        credentials: 'include',
+      });
+    } catch (e) {
+      console.error(e, 'ERR');
+    }
+  
+    console.log(response, 'RES');
+  };
+  
+  const checklogout = async () => {
+    console.log('Inside');
+    let response;
+  
+    try {
+      response = await fetch("http://localhost:2000/api/users/logout", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        credentials: 'include',
+      });
+    } catch (e) {
+      console.error(e, 'ERR');
+    }
+  
+    console.log(response, 'RES');
+  };
   return (
     <div
       className="d-flex align-items-center justify-content-center vh-100"
@@ -79,6 +134,7 @@ const Login = () => {
       <div className="card p-4" style={{ width: "24rem" }}>
         <h1 className="card-title text-center mb-4">Login</h1>
         <button type="button" class="btn" onClick={()=>checkApi()}>Base class</button>
+        <button type="button" class="btn" onClick={()=>checklogout()}>Logout</button>
         {!isLoginValid && (
           <h4 className=" text-center m2-4 text-danger">Invalid Credentials!</h4>
         )}

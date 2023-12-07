@@ -18,6 +18,7 @@ async function authenticateLogin(email, password) {
   if (!isPasswordMatch) {
     throw new Error("Invalid Password!");
   }
+  console.log(user,'USER')
 
   return { _id:user._id, fullName: user.fullName };
 }
@@ -31,7 +32,7 @@ async function authenticateSignup(fullName, email, password) {
     const hashPassowrd = await bcrypt.hash(password, 5);
 
     const newUser = new User({
-      fullname: fullName,
+      fullName: fullName,
       email: email,
       password: hashPassowrd,
     });
