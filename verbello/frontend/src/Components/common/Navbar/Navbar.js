@@ -61,18 +61,18 @@ const Navbar = (props) => {
             <>
               <div class="dropdown">
                 <button
-                  class="btn btn-light dropdown-toggle mt-0"
+                  class="btn btn-light username dropdown-toggle mt-0"
                   type="button"
                   data-bs-toggle="dropdown"
                   aria-expanded="false"
                 >
                   {props.userFullName}
                 </button>
-                <ul class="dropdown-menu">
+                <ul class="dropdown-menu pt-0">
                   <li>
-                    <a class="dropdown-item" href="#" onClick={handleLogout}>
+                    <button class="dropdown-item" onClick={handleLogout}>
                       Log Out
-                    </a>
+                    </button>
                   </li>
                 </ul>
               </div>
