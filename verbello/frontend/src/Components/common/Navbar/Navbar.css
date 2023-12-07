@@ -6,6 +6,10 @@
     text-decoration: none;
 }
 
+  li a{
+    text-decoration: none !important; 
+  }
+ 
 .logo-txt {
     font-family: cursive;
     font-weight: bold;
