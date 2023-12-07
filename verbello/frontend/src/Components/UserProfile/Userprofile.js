@@ -122,7 +122,7 @@ function Userprofile(props) {
               {courses
                 .filter((course) => course.isActive)
                 .map((course, index) => (
-                  <Card key={index}>
+                  <Card key={index} className="mb-3">
                     <div className="active-card">
                       <div>
                         <Card.Body>
@@ -173,7 +173,7 @@ function Userprofile(props) {
                           {course.completion < 100 && (
                             // Show the button if completion is less than 100%
                             <div className="resume-button">
-                              <button onClick={() => Resume(course)} className="mr-2">
+                              <button onClick={() => Resume(course)} className="mx-2">
                                 Resume Lesson
                               </button>
                               <button onClick={() => ViewAll(course)} >

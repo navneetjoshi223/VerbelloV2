@@ -49,6 +49,7 @@
  {
   width: 80%;
   float: right;
+  padding-top: 2em;
 } 
 .active-card{
     display: flex;
