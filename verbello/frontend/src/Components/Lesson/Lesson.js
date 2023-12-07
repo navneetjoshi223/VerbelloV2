@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Route,Routes, Link,Navigate ,useNavigate } from 'react-router-dom';
 import Navbar from "../common/Navbar/Navbar";
 import Footer from "../common/Footer/Footer";
@@ -11,7 +11,20 @@ import LessonContent from './LessonContent';
 
 function Lesson() {
     const [selectedLesson, setSelectedLesson] = useState(null);
+    const [donelesson , setdonelesson] = useState({});
     const navigate = useNavigate();
+    useEffect(() => {
+    let  completedlesson=localStorage.getItem("completedlesson")
+
+    if(!completedlesson){
+          completedlesson ={}
+    }
+    else{
+      completedlesson= JSON.parse(completedlesson)
+    }
+ 
+    setdonelesson(completedlesson)
+    },[]) 
 
     // const lessonsData = [{
     //   Colors: [
@@ -319,6 +332,7 @@ function Lesson() {
                           key={lessonIndex}
                           lesson={lesson}
                           handleLessonClick={() => handleLessonClick(lesson.name)}
+                          iscompleted = {donelesson[lesson.name]}
                         />
                       ))}
                     </div>

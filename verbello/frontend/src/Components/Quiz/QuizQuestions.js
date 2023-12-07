@@ -6,7 +6,7 @@ import axios from "axios";
 import "./QuizQuestions.css";
 import Navbar from "../common/Navbar/Navbar";
 import Footer from "../common/Footer/Footer";
-import { useParams } from "react-router-dom";
+import { useParams ,useNavigate } from "react-router-dom";
 
 const QuizQuestions = (props) => {
   const [currentQuestion, setCurrentQuestion] = useState(0);
@@ -15,6 +15,7 @@ const QuizQuestions = (props) => {
   const correctAnswerAudioRef = React.useRef(null);
   const lessonCompletedAudioRef = React.useRef(null);
   const { language, lessonName } = useParams();
+  const navigate = useNavigate();
 
   /** Navneet's useStates */
   const [isAnsweredCorrectly, setIsAnsweredCorrectly] = useState(false);
@@ -39,6 +40,12 @@ const QuizQuestions = (props) => {
 
     fetchData();
   }, []);
+
+  const handleGoToProfile = () => {
+    // Navigate to the Lesson component and pass the lessonName as a parameter
+    navigate(`/lesson`);
+  };
+
 
   useEffect(() => {
     console.log("isAnsweredCorrectly? ", isAnsweredCorrectly);
@@ -123,6 +130,21 @@ const QuizQuestions = (props) => {
     console.log("Quiz Completed!");
     setIsQuizCompleted(true);
     playLessonCompletedAudio();
+    let  completedlesson=localStorage.getItem("completedlesson")
+
+    if(!completedlesson){
+          completedlesson ={}
+    }
+    else{
+      completedlesson= JSON.parse(completedlesson)
+    }
+
+    completedlesson[lessonName] = true 
+    localStorage.setItem('completedlesson',JSON.stringify(completedlesson))
+
+
+
+    
     //make api call to user and update lessons completed info
   };
 
@@ -140,8 +162,12 @@ const QuizQuestions = (props) => {
               />
               <div className="text-center p-5">
                 <h2 className="mb-4">Kudos! You've done Amazing!</h2>
-                <button className="btn btn-outline-primary btn-lg">
-                  Take Next Lesson
+                <button
+               className="btn btn-outline-primary btn-lg"
+               onClick={() => handleGoToProfile('LessonNameToUpdate')}
+               
+               >
+                  Go to Profile 
                 </button>
               </div>
             </div>
