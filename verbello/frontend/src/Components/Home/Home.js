@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import Navbar from "../common/Navbar/Navbar";
 import IntroCard from "../IntroCard/IntroCard";
 import "./Home.css";
@@ -7,8 +7,6 @@ import Footer from "../common/Footer/Footer";
 import Userprofile from "../UserProfile/Userprofile";
 
 const Home = () => {
-  
-
   
   const offerings = [
     { language: "French", img: "./images/flags/france.jpeg" },
@@ -22,13 +20,9 @@ const Home = () => {
     window.sessionStorage.getItem("userFullName")
   );
 
-  // useEffect(() => {
-
-  // }, []);
-
   return (
     <>
-      <Navbar userFullName={userFullName} />
+      <Navbar />
       {userFullName ? (
         <Userprofile />
       ) : (
