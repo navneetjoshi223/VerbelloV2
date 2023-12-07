@@ -42,7 +42,7 @@ const App = () => {
       <BrowserRouter>
         <Routes>
           <Route path="/" exact element={<Home />} />
-          <Route path="/quiz/:lessonName" element={<QuizQuestions />} />
+          <Route path="/quiz/:language/:lessonName" element={<QuizQuestions />} />
           {/* <Route path="/quiz" element={<QuizQuestions questions={questions} />} /> */}
           {/* <Route path="/login" element={<Login/>} />
           <Route path="/signup" element={<SignUp />} />
@@ -53,6 +53,7 @@ const App = () => {
           <Route path="/profile" element={<Profile />} /> */}
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<Signup />} />
+          <Route path="/contactUs" element={<ContactUs />} />
           {/* Add a wildcard route to redirect to the home page for unknown routes */}
           <Route path="*" element={<Navigate to="/" />} />
 
