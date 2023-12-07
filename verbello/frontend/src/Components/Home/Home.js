@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import Navbar from "../common/Navbar/Navbar";
 import IntroCard from "../IntroCard/IntroCard";
 import "./Home.css";
@@ -52,7 +52,7 @@ const [userData,setUserData]=useState({})
 
   return (
     <>
-      <Navbar userFullName={userFullName} />
+      <Navbar />
       {userFullName ? (
         <Userprofile userData={userData}/>
       ) : (

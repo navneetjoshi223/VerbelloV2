@@ -7,5 +7,6 @@ const qnarouter = express.Router();
 // Login user
 qnarouter.post('/check',isAuthenticated, qnaController.check);
 qnarouter.get('/quizdata', qnaController.fetchQuestion);
+qnarouter.get('/lessondata',qnaController.fetchLesson);
 
 module.exports = qnarouter;
