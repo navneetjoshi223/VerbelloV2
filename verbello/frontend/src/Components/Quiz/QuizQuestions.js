@@ -97,7 +97,7 @@ const QuizQuestions = (props) => {
         <>
           <div className="d-flex align-items-center mx-auto">
             <img
-              src="./images/mascot/pingu-speaking.jpeg"
+              src="/images/mascot/pingu-speaking.jpeg"
               alt="Mascot congratulating."
               className="mascot-speaking"
             />
