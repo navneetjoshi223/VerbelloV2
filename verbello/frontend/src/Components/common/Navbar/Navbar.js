@@ -57,7 +57,7 @@ const Navbar = (props) => {
             </li>
           </ul>
 
-          {props.userFullName ? (
+          {window.sessionStorage.getItem("userFullName") ? (
             <>
               <div className="dropdown">
                 <button
@@ -66,7 +66,7 @@ const Navbar = (props) => {
                   data-bs-toggle="dropdown"
                   aria-expanded="false"
                 >
-                  {props.userFullName}
+                  {window.sessionStorage.getItem("userFullName")}
                 </button>
                 <ul className="dropdown-menu pt-0">
                   <li>
