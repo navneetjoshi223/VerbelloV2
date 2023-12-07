@@ -93,9 +93,10 @@ function Userprofile(props) {
   };
 
   const Resume=(course)=>{
+    console.log(course,'RESUM')
     let courseMap=["Colors","Fruits","Vegetables","Birds","Animals","Tenses","Articles","Adjectives","Preposition","Simple Sentences","Complex Sentences","Real World Conversations"]
-    let lessonname=courseMap[course.lessonsCompleted]
-    navigate('/lesson/'+lessonname)
+    let lessonname=courseMap[course.completion]
+    navigate(`/lesson/${course.language}/${lessonname}`)
   }
   
   

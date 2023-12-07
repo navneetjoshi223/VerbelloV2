@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
 import Navbar from "../common/Navbar/Navbar";
 import IntroCard from "../IntroCard/IntroCard";
 import "./Home.css";
