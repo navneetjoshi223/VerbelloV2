@@ -61,19 +61,29 @@ const Signup = () => {
     setIsFullNameValid(validateFullName(fullName));
     setIsEmailValid(validateEmail(email));
     setIsPasswordValid(validatePassword(password));
-    console.log(validateFullName(fullName),validateEmail(email),validatePassword(password),'VAl')
-    if (validateFullName(fullName) && validateEmail(email) && validatePassword(password)) {
+    console.log(
+      validateFullName(fullName),
+      validateEmail(email),
+      validatePassword(password),
+      "VAl"
+    );
+    if (
+      validateFullName(fullName) &&
+      validateEmail(email) &&
+      validatePassword(password)
+    ) {
       // Perform signup logic
       console.log("Lets go");
       setIsLoading(true);
-      let response
-      try{
-      response = await axios.post(
-        "http://localhost:2000/api/users/signup",
-        { fullName, email, password }
-      );
-      }catch(e){
-        console.log(e,'ERROR')
+      let response;
+      try {
+        response = await axios.post("http://localhost:2000/api/users/signup", {
+          fullName,
+          email,
+          password,
+        });
+      } catch (e) {
+        console.log(e, "ERROR");
       }
       console.log(response, "RESS");
       setIsLoading(false);
@@ -88,90 +98,92 @@ const Signup = () => {
   };
 
   return (
-    <div
-      className="d-flex align-items-center justify-content-center vh-100"
-      style={{
-        // background: 'url("your-background-image.jpg") center/cover',
-        backgroundColor: "rgba(255, 255, 255, 0.8)", // Adjust opacity here
-      }}
-    >
-      <div className="card p-4" style={{ width: "30rem" }}>
-        <h1 className="card-title text-center mb-4">Signup</h1>
-        {!isSignupValid && (
-          <h4 className=" text-center m2-4 text-danger">Error Signing Up!</h4>
-        )}
-        <form>
-          <div className="mb-3">
-            <label htmlFor="fullName" className="form-label">
-              Full Name<span style={{ color: "red" }}>*</span>
-            </label>
-            <input
-              type="text"
-              className="form-control"
-              id="fullName"
-              placeholder="Enter your full name"
-              value={fullName}
-              onChange={handleFullNameChange}
-            />
-            {!isFullNameValid && (
-              <p style={{ color: "red" }}>Invalid full name</p>
-            )}
-          </div>
+    <div className="signup-container">
+      <div
+        className="d-flex align-items-center justify-content-center vh-100"
+        style={{
+          // background: 'url("your-background-image.jpg") center/cover',
+          backgroundColor: "rgba(255, 255, 255, 0.8)", // Adjust opacity here
+        }}
+      >
+        <div className="card p-4" style={{ width: "30rem" }}>
+          <h1 className="card-title text-center mb-4">Sign Up</h1>
+          {!isSignupValid && (
+            <h4 className=" text-center m2-4 text-danger">Error Signing Up!</h4>
+          )}
+          <form>
+            <div className="mb-3">
+              <label htmlFor="fullName" className="form-label">
+                Full Name<span style={{ color: "red" }}>*</span>
+              </label>
+              <input
+                type="text"
+                className="form-control"
+                id="fullName"
+                placeholder="Enter your full name"
+                value={fullName}
+                onChange={handleFullNameChange}
+              />
+              {!isFullNameValid && (
+                <p style={{ color: "red" }}>Invalid full name</p>
+              )}
+            </div>
 
-          <div className="mb-3">
-            <label htmlFor="email" className="form-label">
-              Email address<span style={{ color: "red" }}>*</span>
-            </label>
-            <input
-              type="email"
-              className="form-control"
-              id="email"
-              placeholder="Enter email"
-              value={email}
-              onChange={handleEmailChange}
-            />
-            {!isEmailValid && (
-              <p style={{ color: "red" }}>Invalid email format</p>
-            )}
-          </div>
+            <div className="mb-3">
+              <label htmlFor="email" className="form-label">
+                Email address<span style={{ color: "red" }}>*</span>
+              </label>
+              <input
+                type="email"
+                className="form-control"
+                id="email"
+                placeholder="Enter email"
+                value={email}
+                onChange={handleEmailChange}
+              />
+              {!isEmailValid && (
+                <p style={{ color: "red" }}>Invalid email format</p>
+              )}
+            </div>
 
-          <div className="mb-3">
-            <label htmlFor="password" className="form-label">
-              Password<span style={{ color: "red" }}>*</span>
-            </label>
-            <input
-              type="password"
-              className="form-control"
-              id="password"
-              placeholder="Enter password"
-              value={password}
-              onChange={handlePasswordChange}
-            />
-            {!isPasswordValid && (
-              <p style={{ color: "red" }}>
-                Password must be at least 8 characters with at least one
-                uppercase, one lowercase, and one special character
-              </p>
-            )}
-          </div>
+            <div className="mb-3">
+              <label htmlFor="password" className="form-label">
+                Password<span style={{ color: "red" }}>*</span>
+              </label>
+              <input
+                type="password"
+                className="form-control"
+                id="password"
+                placeholder="Enter password"
+                value={password}
+                onChange={handlePasswordChange}
+              />
+              {!isPasswordValid && (
+                <p style={{ color: "red" }}>
+                  Password must be at least 8 characters with at least one
+                  uppercase, one lowercase, and one special character
+                </p>
+              )}
+            </div>
 
-          <button
-            type="submit"
-            className="btn btn-primary w-100"
-            onClick={(e) => handleSubmit(e)}
-          >
-            {isLoading ? (
-              <div className="spinner-border" role="status">
-                <span className="visually-hidden">Loading...</span>
-              </div>
-            ) : (
-              "Signup"
-            )}
-          </button>
-          <p className="text-center mt-3">
-            Already a member? <a href="/login">Login</a>
-          </p>
-        </form>
+            <button
+              type="submit"
+              className="btn btn-primary w-100"
+              onClick={(e) => handleSubmit(e)}
+            >
+              {isLoading ? (
+                <div className="spinner-border" role="status">
+                  <span className="visually-hidden">Loading...</span>
+                </div>
+              ) : (
+                "Signup"
+              )}
+            </button>
+            <p className="text-center mt-3">
+              Already a member? <a href="/login">Login</a>
+            </p>
+          </form>
+        </div>
       </div>
     </div>
   );
