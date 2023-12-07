@@ -64,7 +64,7 @@ const LessonContent = () => {
       </div>
     ))}
   </div>
-  <Link to={allImagesClicked ? `/quiz/${lessonName}` : '/'}> {/* Link to QuizQuestions */}
+  <Link to={allImagesClicked ? `/quiz/${language}/${lessonName}` : '/'}> {/* Link to QuizQuestions */}
         <button className="btn btn-primary" disabled={!allImagesClicked}>
           Take a Quiz
         </button>

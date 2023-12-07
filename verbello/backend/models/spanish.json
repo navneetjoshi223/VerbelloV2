@@ -1,6 +1,6 @@
 [
   {
-    "lesson": "colors",
+    "lesson": "Colors",
     "imageUrl": "/images/lessons/colors/orange.png",
     "text": "Naranja",
     "englishTranslation": "Orange",
@@ -8,7 +8,7 @@
     "engDescription": "I drink orange juice every day."
   },
   {
-    "lesson": "colors",
+    "lesson": "Colors",
     "imageUrl": "/images/lessons/colors/blue.png",
     "text": "Azul",
     "englishTranslation": "Blue",
@@ -16,7 +16,7 @@
     "engDescription": "The sky is blue today."
   },
   {
-    "lesson": "colors",
+    "lesson": "Colors",
     "imageUrl": "/images/lessons/colors/red.png",
     "text": "Rojo",
     "englishTranslation": "Red",
@@ -24,7 +24,7 @@
     "engDescription": "I like to wear a red shirt."
   },
   {
-    "lesson": "colors",
+    "lesson": "Colors",
     "imageUrl": "/images/lessons/colors/green.png",
     "text": "Verde",
     "englishTranslation": "Green",
@@ -32,7 +32,7 @@
     "engDescription": "The trees are green in spring."
   },
   {
-    "lesson": "colors",
+    "lesson": "Colors",
     "imageUrl": "/images/lessons/colors/yellow.png",
     "text": "Amarillo",
     "englishTranslation": "Yellow",
@@ -40,7 +40,7 @@
     "engDescription": "The sun shines in a yellow sky."
   },
   {
-    "lesson": "colors",
+    "lesson": "Colors",
     "imageUrl": "/images/lessons/colors/pink.png",
     "text": "Rosa",
     "englishTranslation": "Pink",
@@ -48,7 +48,7 @@
     "engDescription": "She loves pink flowers."
   },
   {
-    "lesson": "colors",
+    "lesson": "Colors",
     "imageUrl": "/images/lessons/colors/purple.png",
     "text": "Morado",
     "englishTranslation": "Purple",
@@ -56,7 +56,7 @@
     "engDescription": "The dress is a beautiful purple color."
   },
   {
-    "lesson": "colors",
+    "lesson": "Colors",
     "imageUrl": "/images/lessons/colors/turqoise.png",
     "text": "Turquesa",
     "englishTranslation": "Turquoise",
@@ -64,7 +64,7 @@
     "engDescription": "The sea has a turquoise hue in that area."
   },
   {
-    "lesson": "fruits",
+    "lesson": "Fruits",
     "imageUrl": "/images/lessons/fruits/avocado.jpg",
     "text": "Aguacate",
     "englishTranslation": "Avocado",
@@ -72,7 +72,7 @@
     "engDescription": "Avocado is a delicious and healthy fruit."
   },
   {
-    "lesson": "fruits",
+    "lesson": "Fruits",
     "imageUrl": "/images/lessons/fruits/banana.webp",
     "text": "Plátano",
     "englishTranslation": "Banana",
@@ -80,7 +80,7 @@
     "engDescription": "Banana is a popular and versatile fruit."
   },
   {
-    "lesson": "fruits",
+    "lesson": "Fruits",
     "imageUrl": "/images/lessons/fruits/cherry.jpg",
     "text": "Cereza",
     "englishTranslation": "Cherry",
@@ -88,7 +88,7 @@
     "engDescription": "Cherries are small and sweet."
   },
   {
-    "lesson": "fruits",
+    "lesson": "Fruits",
     "imageUrl": "/images/lessons/fruits/oranges.jpg",
     "text": "Naranja",
     "englishTranslation": "Orange",
@@ -96,7 +96,7 @@
     "engDescription": "Oranges are juicy and full of vitamin C."
   },
   {
-    "lesson": "fruits",
+    "lesson": "Fruits",
     "imageUrl": "/images/lessons/fruits/papaya.jpg",
     "text": "Papaya",
     "englishTranslation": "Papaya",
@@ -104,7 +104,7 @@
     "engDescription": "Papaya is a delicious and nutritious tropical fruit."
   },
   {
-    "lesson": "fruits",
+    "lesson": "Fruits",
     "imageUrl": "/images/lessons/fruits/pineapple.jpg",
     "text": "Piña",
     "englishTranslation": "Pineapple",
@@ -112,7 +112,7 @@
     "engDescription": "Pineapple is juicy and flavorful."
   },
   {
-    "lesson": "fruits",
+    "lesson": "Fruits",
     "imageUrl": "/images/lessons/fruits/strawberry.jpg",
     "text": "Fresa",
     "englishTranslation": "Strawberry",
@@ -120,7 +120,7 @@
     "engDescription": "Strawberries are small, red, and tasty."
   },
   {
-    "lesson": "fruits",
+    "lesson": "Fruits",
     "imageUrl": "/images/lessons/fruits/watermelon.jpg",
     "text": "Sandía",
     "englishTranslation": "Watermelon",
@@ -128,7 +128,7 @@
     "engDescription": "Watermelon is refreshing and sweet in summer."
   },
   {
-    "lesson": "vegetables",
+    "lesson": "Vegetables",
     "imageUrl": "/images/lessons/vegetables/broccoli.jpg",
     "text": "Brócoli",
     "englishTranslation": "Broccoli",
@@ -136,7 +136,7 @@
     "engDescription": "Broccoli is a nutritious and delicious vegetable."
   },
   {
-    "lesson": "vegetables",
+    "lesson": "Vegetables",
     "imageUrl": "/images/lessons/vegetables/cabbage.jpg",
     "text": "Col",
     "englishTranslation": "Cabbage",
@@ -144,7 +144,7 @@
     "engDescription": "Cabbage is crunchy and used in salads and cooked dishes."
   },
   {
-    "lesson": "vegetables",
+    "lesson": "Vegetables",
     "imageUrl": "/images/lessons/vegetables/carrots.jpg",
     "text": "Zanahoria",
     "englishTranslation": "Carrot",
@@ -152,7 +152,7 @@
     "engDescription": "Carrots are sweet and rich in beta-carotene."
   },
   {
-    "lesson": "vegetables",
+    "lesson": "Vegetables",
     "imageUrl": "/images/lessons/vegetables/garlic.jpg",
     "text": "Ajo",
     "englishTranslation": "Garlic",
@@ -160,7 +160,7 @@
     "engDescription": "Garlic adds flavor to many dishes."
   },
   {
-    "lesson": "vegetables",
+    "lesson": "Vegetables",
     "imageUrl": "/images/lessons/vegetables/potato.jpg",
     "text": "Patata",
     "englishTranslation": "Potato",
@@ -168,7 +168,7 @@
     "engDescription": "Potatoes can be cooked in many different ways."
   },
   {
-    "lesson": "vegetables",
+    "lesson": "Vegetables",
     "imageUrl": "/images/lessons/vegetables/tomato.jpg",
     "text": "Tomate",
     "englishTranslation": "Tomato",
@@ -176,7 +176,7 @@
     "engDescription": "Tomatoes are juicy and used in salads and sauces."
   },
   {
-    "lesson": "vegetables",
+    "lesson": "Vegetables",
     "imageUrl": "/images/lessons/vegetables/spinach.jpg",
     "text": "Espinaca",
     "englishTranslation": "Spinach",
@@ -184,7 +184,7 @@
     "engDescription": "Spinach is rich in iron and used in salads and hot dishes."
   },
   {
-    "lesson": "vegetables",
+    "lesson": "Vegetables",
     "imageUrl": "/images/lessons/vegetables/cauliflower.jpg",
     "text": "Coliflor",
     "englishTranslation": "Cauliflower",
@@ -192,7 +192,7 @@
     "engDescription": "Cauliflower can be eaten raw or cooked."
   },
   {
-    "lesson": "birds",
+    "lesson": "Birds",
     "imageUrl": "/images/lessons/birds/eagle.jpg",
     "text": "Águila",
     "englishTranslation": "Eagle",
@@ -200,7 +200,7 @@
     "engDescription": "The eagle is a majestic and powerful bird."
   },
   {
-    "lesson": "birds",
+    "lesson": "Birds",
     "imageUrl": "/images/lessons/birds/flamingo.jpg",
     "text": "Flamenco",
     "englishTranslation": "Flamingo",
@@ -208,7 +208,7 @@
     "engDescription": "The flamingo has colorful plumage and long legs."
   },
   {
-    "lesson": "birds",
+    "lesson": "Birds",
     "imageUrl": "/images/lessons/birds/owl.jpg",
     "text": "Búho",
     "englishTranslation": "Owl",
@@ -216,7 +216,7 @@
     "engDescription": "The owl is known for its night vision and silent flight."
   },
   {
-    "lesson": "birds",
+    "lesson": "Birds",
     "imageUrl": "/images/lessons/birds/parrot.jpg",
     "text": "Loro",
     "englishTranslation": "Parrot",
@@ -224,7 +224,7 @@
     "engDescription": "The parrot is a talkative and colorful bird."
   },
   {
-    "lesson": "birds",
+    "lesson": "Birds",
     "imageUrl": "/images/lessons/birds/peacock.jpg",
     "text": "Pavo real",
     "englishTranslation": "Peacock",
@@ -232,7 +232,7 @@
     "engDescription": "The peacock has beautiful plumage with striking colors."
   },
   {
-    "lesson": "birds",
+    "lesson": "Birds",
     "imageUrl": "/images/lessons/birds/penguin.jpg",
     "text": "Pingüino",
     "englishTranslation": "Penguin",
@@ -240,7 +240,7 @@
     "engDescription": "The penguin is a flightless seabird living in cold climates."
   },
   {
-    "lesson": "birds",
+    "lesson": "Birds",
     "imageUrl": "/images/lessons/birds/hummingbird.jpg",
     "text": "Colibrí",
     "englishTranslation": "Hummingbird",
@@ -248,7 +248,7 @@
     "engDescription": "he hummingbird is a small, fast bird known for its quick flight."
   },
   {
-    "lesson": "birds",
+    "lesson": "Birds",
     "imageUrl": "/images/lessons/birds/toucan.jpg",
     "text": "Tucán",
     "englishTranslation": "Toucan",
@@ -256,7 +256,7 @@
     "engDescription": "The toucan has a long and colorful beak."
   },
   {
-    "lesson": "animals",
+    "lesson": "Animals",
     "imageUrl": "/images/lessons/animals/cat.jpg",
     "text": "Gato",
     "englishTranslation": "Cat",
@@ -264,7 +264,7 @@
     "engDescription": "The cat is a popular and affectionate domestic animal."
   },
   {
-    "lesson": "animals",
+    "lesson": "Animals",
     "imageUrl": "/images/lessons/animals/deer.jpg",
     "text": "Ciervo",
     "englishTranslation": "Deer",
@@ -272,7 +272,7 @@
     "engDescription": "The deer has antlers and is known for its agility."
   },
   {
-    "lesson": "animals",
+    "lesson": "Animals",
     "imageUrl": "/images/lessons/animals/dog.jpg",
     "text": "Perro",
     "englishTranslation": "Dog",
@@ -280,7 +280,7 @@
     "engDescription": "The dog is man's best friend and a loyal pet."
   },
   {
-    "lesson": "animals",
+    "lesson": "Animals",
     "imageUrl": "/images/lessons/animals/fox.jpg",
     "text": "Zorro",
     "englishTranslation": "Fox",
@@ -288,7 +288,7 @@
     "engDescription": "The fox has a reddish fur and is cunning."
   },
   {
-    "lesson": "animals",
+    "lesson": "Animals",
     "imageUrl": "/images/lessons/animals/leopard.jpg",
     "text": "Leopardo",
     "englishTranslation": "Leopard",
@@ -296,7 +296,7 @@
     "engDescription": "The leopard has spots and is a great hunter."
   },
   {
-    "lesson": "animals",
+    "lesson": "Animals",
     "imageUrl": "/images/lessons/animals/panda.jpg",
     "text": "Panda",
     "englishTranslation": "Panda",
@@ -304,7 +304,7 @@
     "engDescription": "The panda is a cute animal and eats bamboo."
   },
   {
-    "lesson": "animals",
+    "lesson": "Animals",
     "imageUrl": "/images/lessons/animals/squirrel.jpg",
     "text": "Ardilla",
     "englishTranslation": "Squirrel",
@@ -312,7 +312,7 @@
     "engDescription": "The squirrel is small and has a furry tail."
   },
   {
-    "lesson": "animals",
+    "lesson": "Animals",
     "imageUrl": "/images/lessons/animals/turtle.jpg",
     "text": "Tortuga",
     "englishTranslation": "Turtle",
@@ -320,75 +320,83 @@
     "engDescription": "The turtle has a shell and lives in water and on land."
   },
   {
-    "lesson": "tenses",
+    "lesson": "Tenses",
     "imageUrl": "/images/lessons/tenses/tenses.jpg",
     "text": "Presente del Indicativo",
     "englishTranslation": "Present Indicative",
     "description": "Hablo español.",
-    "engDescription": ""
+    "engDescription": "I speak Spanish"
   },
   {
-    "lesson": "tenses",
+    "lesson": "Tenses",
     "imageUrl": "/images/lessons/tenses/tenses.jpg",
     "text": "Pretérito Perfecto Simple",
     "englishTranslation": "Preterite Indicative",
     "description": "Hablé con él ayer.",
-    "engDescription": ""
+    "engDescription": "I talked to him yesterday."
   },
   {
-    "lesson": "tenses",
+    "lesson": "Tenses",
     "imageUrl": "/images/lessons/tenses/tenses.jpg",
     "text": "Pretérito Imperfecto",
     "englishTranslation": "Imperfect Indicative",
     "description": "Hablaba todos los días.",
-    "engDescription": ""
+    "engDescription": "He spoke every day."
   },
   {
-    "lesson": "tenses",
+    "lesson": "Tenses",
     "imageUrl": "/images/lessons/tenses/tenses.jpg",
     "text": "Futuro Simple",
     "englishTranslation": "Future Indicative",
     "description": "Hablaré contigo más tarde.",
-    "engDescription": ""
+    "engDescription": "Talk to you later."
   },
   {
-    "lesson": "tenses",
+    "lesson": "Tenses",
     "imageUrl": "/images/lessons/tenses/tenses.jpg",
     "text": "Pretérito Perfecto Compuesto",
     "englishTranslation": "Present Perfect Indicative",
     "description": "He hablado con ellos.",
-    "engDescription": ""
+    "engDescription": "I have talked with them."
   },
   {
-    "lesson": "articles",
+    "lesson": "Articles",
     "imageUrl": "/images/lessons/articles/articles.jpg",
     "text": "El",
     "englishTranslation": "The (Definite Article - Masculine)",
     "description": "El gato está en la casa.",
-    "engDescription": ""
+    "engDescription": "The cat is in the house."
   },
   {
-    "lesson": "articles",
+    "lesson": "Articles",
     "imageUrl": "/images/lessons/articles/articles.jpg",
     "text": "La",
     "englishTranslation": "The (Definite Article - Feminine)",
     "description": "La mesa es grande.",
-    "engDescription": ""
+    "engDescription": "The table is big."
   },
   {
-    "lesson": "articles",
+    "lesson": "Articles",
     "imageUrl": "/images/lessons/articles/articles.jpg",
     "text": "Un",
     "englishTranslation": "A/An (Indefinite Article - Masculine)",
     "description": "Un perro ladra fuerte.",
-    "engDescription": ""
+    "engDescription": "A dog barks loudly."
   },
   {
-    "lesson": "articles",
+    "lesson": "Articles",
     "imageUrl": "/images/lessons/articles/articles.jpg",
     "text": "Una",
     "englishTranslation": "A/An (Indefinite Article - Feminine)",
     "description": "Una casa blanca.",
-    "engDescription": ""
+    "engDescription": "A white house."
+  },
+  {
+    "lesson": "Articles",
+    "imageUrl": "/images/lessons/articles/articles.jpg",
+    "text": "Los",
+    "englishTranslation": "Los/Las (plural in Masculine / Feminine)",
+    "description": "Los hombres",
+    "engDescription": "The men"
   }
 ]

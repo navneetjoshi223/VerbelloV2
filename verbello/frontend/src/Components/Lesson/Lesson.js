@@ -211,8 +211,7 @@ function Lesson() {
 
       const handleLessonClick = (lessonName) => {
       setSelectedLesson(lessonName);
-      const lessonNameinSmallCaps = lessonName.toLowerCase();
-      navigate(`/lesson/${language}/${lessonNameinSmallCaps}`);
+      navigate(`/lesson/${language}/${lessonName}`);
     };
   
     return (

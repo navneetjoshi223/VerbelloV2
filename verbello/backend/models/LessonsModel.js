@@ -15,10 +15,10 @@ const lessonsSchema = new Schema(
 );
 
 const LessonSpanish = mongoose.model("SpanishLesson", lessonsSchema,"SpanishLesson");
-const LessonFrench = mongoose.model("LessonFrench", lessonsSchema,"LessonFrench");
-const LessonGerman = mongoose.model("LessonGerman", lessonsSchema,"LessonGerman");
-const LessonItalian = mongoose.model("LessonItalian", lessonsSchema,"LessonItalian");
-const LessonPortuguese = mongoose.model("LessonPortuguese", lessonsSchema,"LessonPortuguese");
+const LessonFrench = mongoose.model("FrenchLesson", lessonsSchema,"FrenchLesson");
+const LessonGerman = mongoose.model("GermanLesson", lessonsSchema,"GermanLesson");
+const LessonItalian = mongoose.model("ItalianLesson", lessonsSchema,"ItalianLesson");
+const LessonPortuguese = mongoose.model("PortugueseLesson", lessonsSchema,"PortugueseLesson");
 
 
 module.exports = {LessonSpanish, LessonFrench, LessonGerman, LessonItalian, LessonPortuguese};
