@@ -4,8 +4,6 @@ import IntroCard from "../IntroCard/IntroCard";
 import "./Home.css";
 import Carousel from "../Carousel/Carousel";
 import Footer from "../common/Footer/Footer";
-//import Testimonials from "../Testimonials/Testimonials";
-//import franceFlag from '../../assets/images/french/france.jpeg';
 
 const Home = () => {
   const offerings = [

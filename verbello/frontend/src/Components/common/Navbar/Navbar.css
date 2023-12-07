@@ -17,3 +17,9 @@
     background-color: #021f4c;
     background-image: linear-gradient(to bottom, #523c85, #24bdd7);
 }
+
+.custom-toggler  {
+    background-color: #ffffff !important;
+    color: #333;
+    border: 2px solid #333;
+  }
