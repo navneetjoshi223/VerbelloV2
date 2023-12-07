@@ -71,7 +71,7 @@ const Login = () => {
         const data = await response.json();
         if (response.ok) {
           //  alert(data.message);
-          // navigate("/home");
+          navigate("/");
         } else {
           // alert(`Login failed: ${data.message}`);
           console.log('Failed');
