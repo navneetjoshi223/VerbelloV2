@@ -1,7 +1,8 @@
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
 import Navbar from "../common/Navbar/Navbar";
 import Footer from "../common/Footer/Footer";
 import "./Admin.css";
+import axios from 'axios'
 
 const userData = [
     { id: 1, name: "Michael Johnson", email: "michael@example.com", coursesEnrolled: 3, isEnabled: true },
@@ -15,12 +16,46 @@ const userData = [
 
 const Admin = () => {
   const [searchTerm, setSearchTerm] = useState("");
-  const [filteredUsers, setFilteredUsers] = useState(userData);
+  const [userData1, setUserData1] = useState([]);
+  const [filteredUsers, setFilteredUsers] = useState([]);
+
+
+  useEffect(() => {
+    
+    let fetchData = async () => {
+      try{
+      let result = await axios.get("http://localhost:2000/api/users/getAllUsers", );
+      let userDatatemp=result.data.data;
+      console.log(userDatatemp,"ALL data")
+      setUserData1(userDatatemp)
+    }catch(e){
+      console.log(e)
+    }
+      // console.log(result.data, "Data");
+      // let quizData = transformQuizData(result.data.data);
+      // console.log(quizData, "QuizData");
+      // setQuestions(quizData);
+    };
+
+    fetchData();
+  }, []);
+
 
   const handleSearch = () => {
-    // Implement search logic here
-    // Update filteredUsers based on search term
+    const filtered = userData1.filter(
+      (user) =>
+        user._id.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        user.fullName.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        user.email.toLowerCase().includes(searchTerm.toLowerCase())
+    );
+    setFilteredUsers(filtered);
   };
+
+  useEffect(() => {
+    // Use filteredUsers to populate the table when searchTerm changes
+    setFilteredUsers(userData1);
+  }, [userData1]);
+
 
   const handleToggle = (userId) => {
     // Implement toggle logic here
@@ -37,10 +72,10 @@ const Admin = () => {
             type="text"
             placeholder="Search by ID or Username"
             value={searchTerm}
-            onChange={(e) => setSearchTerm(e.target.value)}
+          onChange={(e) => setSearchTerm(e.target.value)}
             className="search-input"
           />
-          <button className="search-button" onClick={handleSearch}>
+          <button className="search-button"onClick={handleSearch}>
             Search
           </button>
         </div>
@@ -52,26 +87,18 @@ const Admin = () => {
                 <th>Name</th>
                 <th>Email</th>
                 <th>Courses Enrolled</th>
-                <th>Enable/Disable</th>
+            
               </tr>
             </thead>
             <tbody>
-              {filteredUsers.map((user) => (
-                <tr key={user.id}>
-                  <td>{user.id}</td>
-                  <td>{user.name}</td>
-                  <td>{user.email}</td>
-                  <td>{user.coursesEnrolled}</td>
-                  <td>
-                    <button
-                      className={`toggle-button ${user.isEnabled ? 'enabled' : 'disabled'}`}
-                      onClick={() => handleToggle(user.id)}
-                    >
-                      {user.isEnabled ? 'Enabled' : 'Disabled'}
-                    </button>
-                  </td>
-                </tr>
-              ))}
+            {filteredUsers.map((user) => (
+              <tr key={user._id}>
+                <td>{user._id}</td>
+                <td>{user.fullName}</td>
+                <td>{user.email}</td>
+                <td>{user.courses.length}</td>
+              </tr>
+            ))}
             </tbody>
           </table>
         </div>

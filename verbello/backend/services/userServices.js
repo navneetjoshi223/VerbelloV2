@@ -1,9 +1,18 @@
 const bcrypt = require("bcrypt");
 const User = require("../models/User");
 
+async function getAllUsers() {
+  return User.find({}, "fullName email courses isActive role");
+}
+
 async function findUserByEmail(email) {
   return User.findOne({ email });
 }
+
+// async function findAllUsers() {
+//   getAllUsers
+//   return User.find({  }).lean();
+// }
 
 async function findUserByID(_id) {
 
@@ -165,10 +174,12 @@ async function authenticateSignup(fullName, email, password) {
 
 module.exports = {
 
+  getAllUsers,
   authenticateSignup,
   authenticateLogin,
   findUserByID,
   enroll,
   completeLesson,
-  completeQuestion
+  completeQuestion,
+  // findAllUsers
 };

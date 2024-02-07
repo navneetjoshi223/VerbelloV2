@@ -116,7 +116,20 @@ async function signupUser(req, res) {
     }
   }
 
+  async function getAllUsers(req, res) {
+    try {
+      console.log('getAllUsers ');
+      const users = await userService.getAllUsers();
+      console.log(users);
+      res.json({status: 200,data:users});
+    } catch(error) {
+      console.error('error fetching all users', error.message);
+      res.status(500).json({message: error.message});
+    }
+  }
+
 module.exports = {
+  getAllUsers,
   loginUser,
   signupUser,
   logoutUser,

@@ -3,6 +3,7 @@ import DisplayImage from "./DisplayImage";
 import { Link, useParams } from "react-router-dom";
 import axios from "axios";
 import "./DisplayImage.css";
+import "./LessonContent.css";
 import Navbar from "../common/Navbar/Navbar";
 import Footer from "../common/Footer/Footer";
 
@@ -54,6 +55,7 @@ const LessonContent = () => {
       <div className="lesson-content-container m-3">
       <div className="text-center mb-4">
           <h3>Lesson: {lessonName}</h3>
+          <h5 className="desctext">View all tiles to take the quiz.</h5>
         </div>
         <div className="image-container">
           {lessonContent.map((imageData, index) => (

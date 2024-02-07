@@ -32,19 +32,19 @@ function Userprofile(props) {
       completion: 40,
     },
     {
-      language: "Germany",
+      language: "German",
       imageUrl: "./images/flags/germany.jpeg",
       isActive: false,
       completion: 80,
     },
     {
-      language: "Italy",
+      language: "Italian",
       imageUrl: "./images/flags/italy.jpeg",
       isActive: false,
       completion: 10,
     },
     {
-      language: "Portugal",
+      language: "Portugese",
       imageUrl: "./images/flags/portugal.jpeg",
       isActive: false,
       completion: 30,
@@ -148,27 +148,28 @@ function Userprofile(props) {
                         <div>
                           <div>Badges that you have earned</div>
                           <div className="badges">
-                            {course.completion > 75 && (
+                            { (course.completion * 100) / 12 > 75 && (
                               <img
                                 className="badg"
                                 src={golden}
                                 alt="Golden Badge"
                               />
                             )}
-                            {course.completion > 50 && (
+                            { (course.completion * 100) / 12 > 25 && (
                               <img
                                 className="badg"
                                 src={silver}
                                 alt="Silver Badge"
                               />
                             )}
-                            {course.completion > 25 && (
-                              <img
-                                className="badg"
-                                src={bronze}
-                                alt="Bronze Badge"
-                              />
-                            )}
+                           { (course.completion * 100) / 12 > 5 && (
+                        <img className="badg" src={bronze} alt="Bronze Badge" />
+                      )}
+                       {(course.completion * 100) / 12 <= 5 && (
+                <span>You didn't earn any badges yet.</span>
+              )}
+
+
                           </div>
                           {course.completion < 100 && (
                             // Show the button if completion is less than 100%

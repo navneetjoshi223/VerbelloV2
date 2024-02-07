@@ -3,11 +3,10 @@ import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
 import Tooltip from 'react-bootstrap/Tooltip';
 
 const UnitLesson = ({ lesson, handleLessonClick, iscompleted = false }) => {
-  const tooltip = <Tooltip id="tooltip"  >{iscompleted ? 'You already completed this lesson!' : 'Yet to complete'}</Tooltip>;
+  // const tooltip = <Tooltip id="tooltip"  >{iscompleted ? 'You already completed this lesson!' : 'Yet to complete'}</Tooltip>;
 
   return (
     <div onClick={handleLessonClick} className="lesson-item">
-    <OverlayTrigger placement="top" overlay={tooltip}>
       <div>
         <img
           className="fixed-image"
@@ -16,7 +15,6 @@ const UnitLesson = ({ lesson, handleLessonClick, iscompleted = false }) => {
         />
         <span>{lesson.name}</span>
       </div>
-    </OverlayTrigger>
     </div>
   );
 };
