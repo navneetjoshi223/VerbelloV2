@@ -1,12 +1,13 @@
 import React from 'react';
 import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
 import Tooltip from 'react-bootstrap/Tooltip';
+import './UnitLesson.css';
 
-const UnitLesson = ({ lesson, handleLessonClick, iscompleted = false }) => {
+const UnitLesson = ({ lesson, handleLessonClick, iscompleted, disabled }) => {
   // const tooltip = <Tooltip id="tooltip"  >{iscompleted ? 'You already completed this lesson!' : 'Yet to complete'}</Tooltip>;
 
   return (
-    <div onClick={handleLessonClick} className="lesson-item">
+    <div onClick={handleLessonClick} className={`lesson-item ${disabled ? 'disabled' : ''}`} disabled={disabled}>
       <div>
         <img
           className="fixed-image"

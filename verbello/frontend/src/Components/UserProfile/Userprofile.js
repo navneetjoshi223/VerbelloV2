@@ -106,7 +106,7 @@ function Userprofile(props) {
     console.log(course,'RESUM')
     let courseMap=["Colors","Fruits","Vegetables","Birds","Animals","Tenses","Articles","Adjectives","Preposition","Simple Sentences","Complex Sentences","Real World Conversations"]
     let lessonname=courseMap[course.completion]
-    navigate(`/lesson/${course.language}`)
+    navigate(`/lesson/${course.language}`, { state: { coursesList: props?.userData?.courses } })
   }
   
   
