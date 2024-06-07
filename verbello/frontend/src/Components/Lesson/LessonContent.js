@@ -57,7 +57,7 @@ const LessonContent = () => {
       <div className="lesson-content-container m-3">
       <div className="text-center mb-4">
           <h3>Lesson: {lessonName}</h3>
-          <h5 className="desctext">View all tiles to take the quiz.</h5>
+          <h5 className="desctext">Click on all tiles to finish lesson and take the quiz.</h5>
         </div>
         <div className="image-container">
           {lessonContent.map((imageData, index) => (

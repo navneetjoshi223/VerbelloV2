@@ -136,7 +136,7 @@ function Userprofile(props) {
                         </Card.Body>
                       </div>
                       <div className="progress-container">
-                        <div>
+                        <div className="progressbar">
                           Current Progress
                           <ProgressBar
                             now={(course.completion * 100) / 12}
