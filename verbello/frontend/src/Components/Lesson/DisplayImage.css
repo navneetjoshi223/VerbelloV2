@@ -22,7 +22,7 @@
   transition: background-color 0.3s ease;
 }
 .dynamic-image:hover {
-  transform: scale(1.05); 
+  transform: scale(1.25); 
 }
 .image-container {
   display: grid;
@@ -57,6 +57,13 @@
 .image-container > :nth-child(3) {
   grid-column: 5;
 
+}
+
+.speak-icon {
+  margin-left: 0.5em;
+  height: 1.5em;
+  width: 1.5em;
+  cursor: pointer;
 }
 
 
