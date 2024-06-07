@@ -81,7 +81,12 @@
 
 .progress-container > div {
     margin-bottom: 5px;
-  }
+}
+
+.progress-container .progressbar {
+  padding-right: 1em;
+}
+
 .card-container .card-im {
     width: 220px; /* Adjust the width as needed */
     height: auto;
@@ -142,7 +147,7 @@
     margin-bottom: 20px; /* Increase the margin */
     justify-content: center;
     flex-direction: column;
-    width: 60%;
+    width: 100%;
     margin-bottom: 0px;
   }
   

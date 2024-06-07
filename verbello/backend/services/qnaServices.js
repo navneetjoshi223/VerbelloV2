@@ -1,6 +1,6 @@
 const bcrypt = require("bcrypt");
-const { French, Spanish, German } = require("../models/QnA");
-const { LessonSpanish, LessonFrench} = require("../models/LessonsModel");
+const { French, Spanish, German, Italian } = require("../models/QnA");
+const { LessonSpanish, LessonFrench, LessonGerman, LessonItalian} = require("../models/LessonsModel");
 
 
 
@@ -10,6 +10,12 @@ async function getQuizData(language,lesson) {
     }
     else if(language==="French"){
         return French.find({ lesson:lesson });
+    }
+    else if(language==="German"){
+        return German.find({ lesson:lesson });
+    }
+    else if(language==="Italian"){
+        return Italian.find({ lesson:lesson });
     }
     else{
         throw new Error('Language not found');
@@ -23,6 +29,12 @@ async function getQuizData(language,lesson) {
     }
     else if(language==="French"){
         return LessonFrench.find({ lesson:lesson });
+    }
+    else if(language === "German") {
+        return LessonGerman.find({lesson: lesson});
+    }
+    else if(language === "Italian") {
+        return LessonItalian.find({lesson: lesson});
     }
     else{
         throw new Error('Language not found');

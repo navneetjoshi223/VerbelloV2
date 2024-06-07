@@ -9,6 +9,8 @@ import Footer from "../common/Footer/Footer";
 
 const LessonContent = () => {
   const [lessonContent, setLessonContent] = useState([]);
+  const [isSpeaking, setIsSpeaking] = useState(false);
+  const [audioStarted, setAudioStarted] = useState(false);
   const { language, lessonName } = useParams();
 
   useEffect(() => {
@@ -55,13 +57,14 @@ const LessonContent = () => {
       <div className="lesson-content-container m-3">
       <div className="text-center mb-4">
           <h3>Lesson: {lessonName}</h3>
-          <h5 className="desctext">View all tiles to take the quiz.</h5>
+          <h5 className="desctext">Click on all tiles to finish lesson and take the quiz.</h5>
         </div>
         <div className="image-container">
           {lessonContent.map((imageData, index) => (
             <div>
               <DisplayImage
                 key={index}
+                lang={language}
                 imageUrl={imageData.imageUrl}
                 originalText={imageData.text}
                 englishName={imageData.englishTranslation}
@@ -70,7 +73,7 @@ const LessonContent = () => {
                 handleImageClick={handleImageClick}
                 isClicked={clickedImages.has(imageData.text)}
               />
-              <p>{imageData.text}</p>
+              {/* <p>{imageData.text}</p> */}
             </div>
           ))}
         </div>

@@ -1,0 +1,131 @@
+[
+    {
+      "lesson": "Colors",
+      "imageUrl": "/images/lessons/colors/orange.png",
+      "text": "Orange",
+      "englishTranslation": "Orange",
+      "description": "Ich trinke jeden Tag Orangensaft.",
+      "engDescription": "I drink orange juice every day."
+    },
+    {
+      "lesson": "Colors",
+      "imageUrl": "/images/lessons/colors/blue.png",
+      "text": "Blau",
+      "englishTranslation": "Blue",
+      "description": "Der Himmel ist heute blau.",
+      "engDescription": "The sky is blue today."
+    },
+    {
+      "lesson": "Colors",
+      "imageUrl": "/images/lessons/colors/red.png",
+      "text": "Rot",
+      "englishTranslation": "Red",
+      "description": "Ich trage gerne ein rotes T-Shirt.",
+      "engDescription": "I like to wear a red shirt."
+    },
+    {
+      "lesson": "Colors",
+      "imageUrl": "/images/lessons/colors/green.png",
+      "text": "Grün",
+      "englishTranslation": "Green",
+      "description": "Die Bäume sind im Frühling grün.",
+      "engDescription": "The trees are green in spring."
+    },
+    {
+      "lesson": "Colors",
+      "imageUrl": "/images/lessons/colors/yellow.png",
+      "text": "Gelb",
+      "englishTranslation": "Yellow",
+      "description": "Die Sonne scheint in einem gelben Himmel.",
+      "engDescription": "The sun shines in a yellow sky."
+    },
+    {
+      "lesson": "Colors",
+      "imageUrl": "/images/lessons/colors/pink.png",
+      "text": "Rosa",
+      "englishTranslation": "Pink",
+      "description": "Sie liebt rosa Blumen.",
+      "engDescription": "She loves pink flowers."
+    },
+    {
+      "lesson": "Colors",
+      "imageUrl": "/images/lessons/colors/purple.png",
+      "text": "Violett",
+      "englishTranslation": "Purple",
+      "description": "Das Kleid ist von einer schönen violetten Farbe.",
+      "engDescription": "The dress is a beautiful purple color."
+    },
+    {
+      "lesson": "Colors",
+      "imageUrl": "/images/lessons/colors/turqoise.png",
+      "text": "Türkis",
+      "englishTranslation": "Turquoise",
+      "description": "Das Meer hat in dieser Gegend einen türkisfarbenen Ton.",
+      "engDescription": "The sea has a turquoise hue in that area."
+    },
+    {
+      "lesson": "Fruits",
+      "imageUrl": "/images/lessons/fruits/avocado.jpg",
+      "text": "Avocado",
+      "englishTranslation": "Avocado",
+      "description": "Die Avocado ist eine köstliche und gesunde Frucht.",
+      "engDescription": "Avocado is a delicious and healthy fruit."
+    },
+    {
+      "lesson": "Fruits",
+      "imageUrl": "/images/lessons/fruits/banana.webp",
+      "text": "Banane",
+      "englishTranslation": "Banana",
+      "description": "Die Banane ist eine beliebte und vielseitige Frucht.",
+      "engDescription": "Banana is a popular and versatile fruit."
+    },
+    {
+      "lesson": "Fruits",
+      "imageUrl": "/images/lessons/fruits/cherry.jpg",
+      "text": "Kirsche",
+      "englishTranslation": "Cherry",
+      "description": "Kirschen sind klein und süß.",
+      "engDescription": "Cherries are small and sweet."
+    },
+    {
+      "lesson": "Fruits",
+      "imageUrl": "/images/lessons/fruits/oranges.jpg",
+      "text": "Orange",
+      "englishTranslation": "Orange",
+      "description": "Orangen sind saftig und reich an Vitamin C.",
+      "engDescription": "Oranges are juicy and full of vitamin C."
+    },
+    {
+      "lesson": "Fruits",
+      "imageUrl": "/images/lessons/fruits/papaya.jpg",
+      "text": "Papaya",
+      "englishTranslation": "Papaya",
+      "description": "Die Papaya ist eine köstliche und nahrhafte tropische Frucht.",
+      "engDescription": "Papaya is a delicious and nutritious tropical fruit."
+    },
+    {
+      "lesson": "Fruits",
+      "imageUrl": "/images/lessons/fruits/pineapple.jpg",
+      "text": "Ananas",
+      "englishTranslation": "Pineapple",
+      "description": "Die Ananas ist saftig und voller Geschmack.",
+      "engDescription": "Pineapple is juicy and flavorful."
+    },
+    {
+      "lesson": "Fruits",
+      "imageUrl": "/images/lessons/fruits/strawberry.jpg",
+      "text": "Erdbeere",
+      "englishTranslation": "Strawberry",
+      "description": "Erdbeeren sind klein, rot und lecker.",
+      "engDescription": "Strawberries are small, red, and tasty."
+    },
+    {
+      "lesson": "Fruits",
+      "imageUrl": "/images/lessons/fruits/watermelon.jpg",
+      "text": "Wassermelone",
+      "englishTranslation": "Watermelon",
+      "description": "Die Wassermelone ist im Sommer erfrischend und süß.",
+      "engDescription": "Watermelon is refreshing and sweet in summer."
+    }
+]
+  

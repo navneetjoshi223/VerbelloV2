@@ -122,7 +122,7 @@ function Userprofile(props) {
               {courses
                 .filter((course) => course.isActive)
                 .map((course, index) => (
-                  <Card key={index} className="mb-3">
+                  <Card key={index} className="mb-3 shadow-lg">
                     <div className="active-card">
                       <div>
                         <Card.Body>
@@ -136,7 +136,7 @@ function Userprofile(props) {
                         </Card.Body>
                       </div>
                       <div className="progress-container">
-                        <div>
+                        <div className="progressbar">
                           Current Progress
                           <ProgressBar
                             now={(course.completion * 100) / 12}
