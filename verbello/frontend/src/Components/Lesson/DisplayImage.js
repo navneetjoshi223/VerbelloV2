@@ -20,6 +20,26 @@ const DisplayImage = ({
     setShow(true);
   };
 
+  const speakTitle = () => {
+    console.log('im triggered');
+    const utterance = new SpeechSynthesisUtterance(originalText);
+    if (lang === "Spanish") {
+      utterance.lang = "es-ES";
+    } else if (lang === "French") {
+      utterance.lang = "fr-FR";
+    } else if (lang === "German") {
+      utterance.lang = "de-DE";
+    } else if (lang === "Italian") {
+      utterance.lang = "it-IT";
+    }
+
+    utterance.onstart = () => {
+    };
+    utterance.onend = () => {
+    };
+    window.speechSynthesis.speak(utterance);
+  };
+
   const speakSentence = () => {
     const utterance = new SpeechSynthesisUtterance(description);
     if (lang === "Spanish") {
@@ -58,7 +78,7 @@ const DisplayImage = ({
 
   return (
     <>
-      <div className="dynamic-image" onClick={handleShow}>
+      <div className={`dynamic-image ${isClicked ? 'isclicked' : ''}`} onClick={handleShow} onMouseEnter={speakTitle}>
         <p>{originalText}</p>
         <img className="fixed-size-image" src={imageUrl} alt={originalText} />
       </div>

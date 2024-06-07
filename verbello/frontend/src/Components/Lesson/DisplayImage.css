@@ -11,6 +11,14 @@
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
   transition: transform 0.3s ease-in-out;
 }
+
+.dynamic-image.isclicked {
+  border: 3px solid #0fc540;
+  box-shadow: 0 4px 8px rgba(18, 182, 21, 0.3), 0 6px 20px rgba(0, 0, 0, 0.2);
+  transform: scale(1.05);
+  opacity: 0.7;
+}
+
 .quiz-button {
   background-color: #ff7a18; 
   color: white;

@@ -11,7 +11,6 @@ const LessonContent = () => {
   const [lessonContent, setLessonContent] = useState([]);
   const [isSpeaking, setIsSpeaking] = useState(false);
   const [audioStarted, setAudioStarted] = useState(false);
-  const [completedInitialSpeak, setCompletedInitialSpeak] = useState(false);
   const { language, lessonName } = useParams();
 
   useEffect(() => {
@@ -31,7 +30,6 @@ const LessonContent = () => {
         let lessonContent = result.data.data;
         console.log("lesson content:", lessonContent);
         setLessonContent(lessonContent);
-        speakAndExplainInitially(lessonContent);
       } catch (error) {
         console.error("Error fetching lesson data:", error);
       }
@@ -39,32 +37,6 @@ const LessonContent = () => {
   
     fetchLessonContent();
   }, [language, lessonName]);
-
-  const speakAndExplainInitially = (lessonContent) => {
-    lessonContent.forEach(content => {
-      console.log(content.text);
-      const utterance = new SpeechSynthesisUtterance(content.text);
-      if(language === "Spanish") {
-        utterance.lang = 'es-ES';
-      } else if (language === "French") {
-        utterance.lang = 'fr-FR';
-      } else if (language === "German") {
-        utterance.lang = 'de-DE';
-      } else if(language === "Italian") {
-        utterance.lang = 'it-IT';
-      }
-      utterance.onstart = () => {
-        setIsSpeaking(true);
-        setAudioStarted(true);
-      };
-      utterance.onend = () => {
-        setIsSpeaking(false);
-        setAudioStarted(false);
-      };
-      window.speechSynthesis.speak(utterance);
-      //setTimeout(2000);
-    });
-  };
   
 
   const [clickedImages, setClickedImages] = useState(new Set());
