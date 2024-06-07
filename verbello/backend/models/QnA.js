@@ -21,5 +21,6 @@ const qnaSchema = new Schema(
 const French = mongoose.model("FrenchQuiz", qnaSchema,"FrenchQuiz");
 const Spanish = mongoose.model("SpanishQuiz", qnaSchema,"SpanishQuiz");
 const German = mongoose.model("GermanQuiz", qnaSchema,"GermanQuiz");
+const Italian = mongoose.model("ItalianQuiz", qnaSchema,"ItalianQuiz");
 
-module.exports = {French,Spanish,German};
+module.exports = {French,Spanish,German, Italian};
