@@ -15,8 +15,11 @@ import { Link } from 'react-router-dom';
 
 
 import "./UserProfile.css"; // Import the CSS file for user profile styling
+import { Alert } from "react-bootstrap";
 
 function Userprofile(props) {
+  const [showAlert, setShowAlert] = useState(false);
+  const [enrolledCourse, setEnrolledCourse] = useState("");
   const navigate = useNavigate();
   const languageMap = [
     {
@@ -91,9 +94,15 @@ function Userprofile(props) {
             : c
         )
       );
+      setShowAlert(true);
+      setEnrolledCourse(course.language);
     } catch (e) {
       console.log(e);
     }
+  };
+
+  const handleCloseAlert = () => {
+    setShowAlert(false);
   };
 
   const Resume=(course)=>{
@@ -198,7 +207,7 @@ function Userprofile(props) {
             {courses
               .filter((course) => !course.isActive)
               .map((course, index) => (
-                <Card key={index} style={{ width: "18rem" }}>
+                <Card key={index} className="available-courses-card" style={{ width: "18rem" }}>
                   <Card.Body>
                     <Card.Title>{course.language}</Card.Title>
                     <div className="round-image">
@@ -219,6 +228,13 @@ function Userprofile(props) {
               ))}
           </div>
         </div>
+
+        <Alert show={showAlert} className="fixed-top-alert" variant="success" onClose={handleCloseAlert} dismissible>
+        {/* <Alert.Heading>Congratulations!</Alert.Heading> */}
+        <p className="alert-text">
+          You've successfully enrolled for the {enrolledCourse} course!
+        </p>
+      </Alert>
       </div>
     </div>
   </>
