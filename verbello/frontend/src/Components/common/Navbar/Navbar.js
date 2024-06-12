@@ -44,18 +44,13 @@ const Navbar = (props) => {
           } order-md-last`}
           id="navbarNavDropdown"
         >
-          <ul className="navbar-nav ms-auto mb-2 mb-lg-0">
-            <li className="nav-item">
-              <Link to="/contactus" className="nav-link text-white">
-                Contact Us
-              </Link>
-            </li>
+          {/* <ul className="navbar-nav ms-auto mb-2 mb-lg-0">
             <li className="nav-item">
               <Link to="/aboutus" className="nav-link text-white">
                 About Us
               </Link>
             </li>
-          </ul>
+          </ul> */}
 
           {window.sessionStorage.getItem("userFullName") ? (
             <>

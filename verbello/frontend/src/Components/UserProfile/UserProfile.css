@@ -155,3 +155,31 @@
 .btn {
   margin-right: 10px;
 }
+
+.available-courses-card {
+  border: none;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: box-shadow 0.3s;
+}
+
+.available-courses-card:hover {
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.3);
+}
+
+.fixed-top-alert {
+  position: fixed;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 10000; /* Ensure it's above other content */
+}
+
+.btn-close {
+  margin: 0;
+}
+
+.alert-text {
+  margin-bottom: 0;
+}
