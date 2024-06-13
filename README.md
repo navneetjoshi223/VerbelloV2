@@ -10,6 +10,7 @@ Users can sign up to the platform, and login to quickly start learning their cho
 2) Quiz for each lesson to review what the user learnt
 <br>
 3) Audio based output for each right or wrong answer selection 
+<br>
 
 <p>You can check the website at https://verbello.netlify.app/</p>
 
