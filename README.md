@@ -1,4 +1,4 @@
-Hi there, welcome to Verbello!
+<Welcome to Verbello!
 
 This is a language learning platform for native English speakers to learn languages such as Spanish, French, German, Italian and Portuguese.
 
