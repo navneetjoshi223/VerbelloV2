@@ -10,6 +10,7 @@
 
 # production
 /build
+/verbello/frontend/build
 
 # misc
 **/.DS_Store
