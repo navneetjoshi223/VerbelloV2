@@ -30,7 +30,7 @@ const [userData,setUserData]=useState({})
     let _id=window.sessionStorage.getItem("userId")
     let fetchData = async () => {
       try{
-      let result = await axios.get("http://localhost:2000/api/users/userdata", {
+      let result = await axios.get(`${process.env.REACT_APP_BACKEND_URL}/api/users/userdata`, {
         params: {
           _id
         },

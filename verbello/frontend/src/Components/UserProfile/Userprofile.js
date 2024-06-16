@@ -82,7 +82,7 @@ function Userprofile(props) {
 
   const enrollCourse = async (course) => {
     try {
-      await axios.post("http://localhost:2000/api/users/enroll", {
+      await axios.post(`${process.env.REACT_APP_BACKEND_URL}/api/users/enroll`, {
         _id: window.sessionStorage.getItem("userId"),
         language: course.language,
       });

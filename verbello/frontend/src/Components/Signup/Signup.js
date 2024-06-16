@@ -77,7 +77,7 @@ const Signup = () => {
       setIsLoading(true);
       let response;
       try {
-        response = await axios.post("http://localhost:2000/api/users/signup", {
+        response = await axios.post(`${process.env.REACT_APP_BACKEND_URL}/api/users/signup`, {
           fullName,
           email,
           password,
