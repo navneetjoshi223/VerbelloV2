@@ -24,7 +24,7 @@ const Admin = () => {
     
     let fetchData = async () => {
       try{
-      let result = await axios.get("http://localhost:2000/api/users/getAllUsers", );
+      let result = await axios.get(`${process.env.REACT_APP_BACKEND_URL}/api/users/getAllUsers`, );
       let userDatatemp=result.data.data;
       console.log(userDatatemp,"ALL data")
       setUserData1(userDatatemp)

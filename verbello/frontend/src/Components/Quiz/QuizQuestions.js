@@ -26,7 +26,7 @@ const QuizQuestions = (props) => {
     console.log(language, lessonName, "Check");
     let fetchData = async () => {
       let lesson = lessonName;
-      let result = await axios.get("http://localhost:2000/api/qna/quizdata", {
+      let result = await axios.get(`${process.env.REACT_APP_BACKEND_URL}/api/qna/quizdata`, {
         params: {
           language,
           lesson,
@@ -133,7 +133,7 @@ const QuizQuestions = (props) => {
 
     
       try {
-        await axios.post("http://localhost:2000/api/users/completelesson", {
+        await axios.post(`${process.env.REACT_APP_BACKEND_URL}/api/users/completelesson`, {
           _id: window.sessionStorage.getItem("userId"),
           language: language,
         });

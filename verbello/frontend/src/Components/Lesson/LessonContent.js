@@ -20,7 +20,7 @@ const LessonContent = () => {
     let fetchLessonContent = async () => {
       try {
         let lesson = lessonName;
-        let result = await axios.get("http://localhost:2000/api/qna/lessondata", {
+        let result = await axios.get(`${process.env.REACT_APP_BACKEND_URL}/api/qna/lessondata`, {
           params: {
             language,
             lesson,
