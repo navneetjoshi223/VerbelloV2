@@ -53,6 +53,7 @@ app.use(function (req, res, next) {
 });
 
 app.use(cors(corsOptions));
+app.options('*', cors(corsOptions));
 
 axios.default.withCredentials = true;
 
