@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "./Login.css";
 
 const Login = () => {
@@ -185,7 +185,7 @@ const Login = () => {
               )}
             </button>
             <p className="text-center mt-3">
-              Not a member? <a href="/signup">Signup</a>
+              Not a member? <Link to="/signup">Signup</Link>
             </p>
           </form>
         </div>
