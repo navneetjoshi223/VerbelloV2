@@ -10,10 +10,13 @@
 
 # production
 /build
+/verbello/frontend/build
 
 # misc
 **/.DS_Store
 
+/verbello/backend/.env
+/verbello/frontend/.env
 .env.local
 .env.development.local
 .env.test.local

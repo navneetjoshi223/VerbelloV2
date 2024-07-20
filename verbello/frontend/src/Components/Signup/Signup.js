@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "./Signup.css";
 import axios from "axios";
 
@@ -77,7 +77,7 @@ const Signup = () => {
       setIsLoading(true);
       let response;
       try {
-        response = await axios.post("http://localhost:2000/api/users/signup", {
+        response = await axios.post(`${process.env.REACT_APP_BACKEND_URL}/api/users/signup`, {
           fullName,
           email,
           password,
@@ -180,7 +180,7 @@ const Signup = () => {
               )}
             </button>
             <p className="text-center mt-3">
-              Already a member? <a href="/login">Login</a>
+              Already a member? <Link to="/login">Login</Link>
             </p>
           </form>
         </div>

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "./Login.css";
 
 const Login = () => {
@@ -56,7 +56,7 @@ const Login = () => {
       console.log("Lets go");
 
       try {
-        const response = await fetch("http://localhost:2000/api/users/login", {
+        const response = await fetch(`${process.env.REACT_APP_BACKEND_URL}/api/users/login`, {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
@@ -98,7 +98,7 @@ const Login = () => {
     let response;
 
     try {
-      response = await fetch("http://localhost:2000/api/qna/check", {
+      response = await fetch(`${process.env.REACT_APP_BACKEND_URL}/api/qna/check`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -117,7 +117,7 @@ const Login = () => {
     let response;
 
     try {
-      response = await fetch("http://localhost:2000/api/users/logout", {
+      response = await fetch(`${process.env.REACT_APP_BACKEND_URL}/api/users/logout`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -185,7 +185,7 @@ const Login = () => {
               )}
             </button>
             <p className="text-center mt-3">
-              Not a member? <a href="/signup">Signup</a>
+              Not a member? <Link to="/signup">Signup</Link>
             </p>
           </form>
         </div>

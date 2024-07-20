@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import './Carousel.css'; 
+import { Link } from 'react-router-dom';
 
 const Carousel = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
@@ -44,7 +45,7 @@ const Carousel = () => {
           <img src={slide.image} alt={`Testimonial ${index + 1}`} className="slide-image" />
           <div className="slide-text text-center">
           <p className="slide-description">{slide.text}</p>
-            <a href="/signup" className="cta-button">Start Learning Now</a>
+            <Link to="/signup" className="cta-button">Start Learning Now</Link>
           </div>
         </div>
       ))}

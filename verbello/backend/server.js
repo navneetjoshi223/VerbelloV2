@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 const cors = require('cors'); 
 const routes = require('./routes/routes');
 const axios=require("axios");
-const allowedOrigins = ["http://localhost:3001", "http://localhost:3000","http://localhost:3000/email","localhost"]; // Add your actual domain here
+const allowedOrigins = ["http://localhost:3001", "http://localhost:3000","http://localhost:3000/email","localhost", `${process.env.FRONTEND_API_BASE_URL}`]; // Add your actual domain here
 
 
 
@@ -53,6 +53,7 @@ app.use(function (req, res, next) {
 });
 
 app.use(cors(corsOptions));
+app.options('*', cors(corsOptions));
 
 axios.default.withCredentials = true;
 

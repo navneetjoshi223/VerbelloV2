@@ -4,7 +4,7 @@
         try {
           // Make a request to your server to check if the user is logged in
           response = await fetch(
-            "http://localhost:2000/api/users/checkSession",
+            `${process.env.REACT_APP_BACKEND_URL}/api/users/checkSession`,
             {
               method: "POST",
               headers: {
@@ -33,7 +33,7 @@ export const handleLogout = async() =>{
   let response;
 
   try {
-    response = await fetch("http://localhost:2000/api/users/logout", {
+    response = await fetch(`${process.env.REACT_APP_BACKEND_URL}/api/users/logout`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
