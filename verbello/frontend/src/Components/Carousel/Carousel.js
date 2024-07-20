@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import './Carousel.css'; 
+import { Link } from 'react-router-dom';
 
 const Carousel = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
