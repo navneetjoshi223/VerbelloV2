@@ -12,4 +12,7 @@ Users can sign up to the platform, and login to quickly start learning their cho
 3) Audio based output for each right or wrong answer selection 
 <br> <br>
 
+<h3>Check it out!</h3>
+You can see the website live at https://verbello.netlify.app
+
 
