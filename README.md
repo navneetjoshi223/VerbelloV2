@@ -55,5 +55,3 @@ Ensure you have the following installed:
 
 Check out the live version of the website at [https://verbello.netlify.app](https://verbello.netlify.app).
 ```
-
-You can now copy and paste this entire block directly into your README.md file.
