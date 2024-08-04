@@ -1,18 +1,61 @@
-<h2>Welcome to Verbello!</h2>
+Got it! Here's the full README.md content in code format, including the parts after the "Frontend" section:
 
-This is a language learning platform for native English speakers to learn languages such as Spanish, French, German, Italian and Portuguese.
+```markdown
+# Verbello
 
-Users can sign up to the platform, and login to quickly start learning their choice of language!
+Welcome to **Verbello**! This is a language learning platform designed for native English speakers to learn Spanish, French, German, Italian, and Portuguese. 
 
-<h3>Features: </h3>
-1) Simple lessons with audio based learning on clicking each tile
-<br>
-2) Quiz for each lesson to review what the user learnt
-<br>
-3) Audio based output for each right or wrong answer selection 
-<br> <br>
+## Features
 
-<h3>Check it out!</h3>
-You can see the website live at https://verbello.netlify.app
+- **Interactive Lessons**: Simple lessons with audio-based learning activated by clicking each tile.
+- **Quizzes**: Review what you’ve learned with quizzes for each lesson.
+- **Audio Feedback**: Get audio feedback for each right or wrong answer selection.
 
+## Getting Started
 
+### Prerequisites
+
+Ensure you have the following installed:
+- Node.js
+- npm (Node Package Manager)
+
+### Running the Application
+
+#### Frontend
+
+1. Navigate to the frontend folder:
+   ```bash
+   cd frontend
+   ```
+2. Install dependencies:
+   ```bash
+   npm install
+   ```
+3. Start the frontend server:
+   ```bash
+   npm start
+   ```
+   The frontend will be running on [http://localhost:3000](http://localhost:3000).
+
+#### Backend
+
+1. Navigate to the backend folder:
+   ```bash
+   cd backend
+   ```
+2. Install dependencies:
+   ```bash
+   npm install
+   ```
+3. Start the backend server:
+   ```bash
+   node server.js
+   ```
+   The backend will be running on [http://localhost:2000](http://localhost:2000).
+
+## Live Demo
+
+Check out the live version of the website at [https://verbello.netlify.app](https://verbello.netlify.app).
+```
+
+You can now copy and paste this entire block directly into your README.md file.
