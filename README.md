@@ -54,4 +54,3 @@ Ensure you have the following installed:
 ## Live Demo
 
 Check out the live version of the website at [https://verbello.netlify.app](https://verbello.netlify.app).
-```
