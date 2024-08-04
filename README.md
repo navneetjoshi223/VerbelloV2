@@ -1,27 +1,27 @@
 Got it! Here's the full README.md content in code format, including the parts after the "Frontend" section:
 
 ```markdown
-# Verbello
+#Verbello
 
 Welcome to **Verbello**! This is a language learning platform designed for native English speakers to learn Spanish, French, German, Italian, and Portuguese. 
 
-## Features
+##Features
 
 - **Interactive Lessons**: Simple lessons with audio-based learning activated by clicking each tile.
 - **Quizzes**: Review what you’ve learned with quizzes for each lesson.
 - **Audio Feedback**: Get audio feedback for each right or wrong answer selection.
 
-## Getting Started
+##Getting Started
 
-### Prerequisites
+###Prerequisites
 
 Ensure you have the following installed:
 - Node.js
 - npm (Node Package Manager)
 
-### Running the Application
+###Running the Application
 
-#### Frontend
+####Frontend
 
 1. Navigate to the frontend folder:
    ```bash
@@ -37,7 +37,7 @@ Ensure you have the following installed:
    ```
    The frontend will be running on [http://localhost:3000](http://localhost:3000).
 
-#### Backend
+####Backend
 
 1. Navigate to the backend folder:
    ```bash
@@ -53,7 +53,7 @@ Ensure you have the following installed:
    ```
    The backend will be running on [http://localhost:2000](http://localhost:2000).
 
-## Live Demo
+##Live Demo
 
 Check out the live version of the website at [https://verbello.netlify.app](https://verbello.netlify.app).
 ```
