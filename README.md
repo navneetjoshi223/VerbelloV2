@@ -2,6 +2,7 @@
 # Verbello
 
 Welcome to **Verbello**! This is a language learning platform designed for native English speakers to learn Spanish, French, German, Italian, and Portuguese. 
+This repo is a fork which builds on our original language learning project repo: https://github.com/navneetjoshi223/web-design-final-project 
 
 ## Features
 
