@@ -1,26 +1,121 @@
+/* Home.css — logged-out page polish */
+
+.home-page-bg {
+  background: linear-gradient(180deg, #f8f9fc 0%, #eef2ff 55%, #f8f9fc 100%);
+  padding: 1.5rem 0 3rem;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Nunito",
+    "Helvetica Neue", Roboto, sans-serif;
+  color: #111827;
+  min-height: calc(100vh - 120px);
+}
+
+/* "Languages we offer" section header */
 .custom-header {
-  color: #00c1be;
+  font-size: 1.75rem;
+  font-weight: 700;
+  text-align: center;
+  background: linear-gradient(90deg, #6366f1, #8b5cf6);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent;
+  letter-spacing: -0.01em;
+  margin-bottom: 1rem;
 }
 
+/* Language name on each card */
 .language-name {
-  color: #320c8b;
+  color: #1f2937;
+  font-weight: 600;
+  font-size: 1.05rem;
+  letter-spacing: -0.005em;
+  margin-top: 0.75rem;
 }
 
+/* Outer card containing all language tiles */
 .languages-offered {
-  border: none;
-  background-color: #f8fefd;
+  border: none !important;
+  background: transparent !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  margin: 3rem auto 2rem !important;
+  width: min(94vw, 1400px);
+  max-width: none;
+  padding: 0 !important;
 }
 
+.languages-offered .card-body {
+  padding: 0;
+}
+
+.languages-offered .card-group {
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+/* Per-language card — refined hover (no more aggressive 3D rotate) */
 .card-language {
-  perspective: 1000px; /* Adds a 3D perspective effect */
-  transition: transform 0.5s;
-  background-color: #f8fefd;
+  perspective: 1000px;
+  background: transparent !important;
+  border: none !important;
+  border-radius: 0 !important;
+  padding: 0.75rem 0.5rem !important;
+  box-shadow: none !important;
+  transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .card-language:hover {
-  transform: scale(1.1) rotateY(10deg) rotateX(10deg); /* Scales and rotates the card on hover */
+  transform: translateY(-6px);
+  box-shadow: none !important;
 }
 
-/* .country {
-  border-radius: 1em;
-} */
+.card-language .card-img-top.country {
+  width: 100%;
+  height: 160px;
+  object-fit: cover;
+  border-radius: 16px !important;
+  border-top-left-radius: 16px !important;
+  border-top-right-radius: 16px !important;
+  border-bottom-left-radius: 16px !important;
+  border-bottom-right-radius: 16px !important;
+  box-shadow: 0 4px 12px rgba(17, 24, 39, 0.12);
+  transition: transform 0.35s ease;
+  display: block;
+}
+
+.card-language:hover .card-img-top.country {
+  animation: flag-wave 2s ease-in-out infinite;
+}
+
+@keyframes flag-wave {
+  0% {
+    transform: scale(1.05) rotateY(-8deg) rotateZ(-1deg);
+  }
+  50% {
+    transform: scale(1.05) rotateY(8deg) rotateZ(1deg);
+  }
+  100% {
+    transform: scale(1.05) rotateY(-8deg) rotateZ(-1deg);
+  }
+}
+
+.card-language .card-body {
+  padding: 0 !important;
+  text-align: center;
+}
+
+@media (max-width: 768px) {
+  .languages-offered {
+    padding: 1.5rem 1rem !important;
+  }
+  .custom-header {
+    font-size: 1.4rem;
+  }
+  .languages-offered .card-group {
+    flex-wrap: wrap;
+  }
+  .card-language {
+    flex: 1 1 calc(50% - 0.5rem);
+    min-width: 140px;
+  }
+}

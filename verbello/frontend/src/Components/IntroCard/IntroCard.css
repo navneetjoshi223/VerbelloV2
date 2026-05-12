@@ -1,8 +1,57 @@
-.verbello-slogan {
-    color: #00c1be;
-} 
-  
+/* IntroCard.css — slogan + intro card polish */
+
 .verbello-intro {
-    box-shadow: 0px 0 15px rgba(0, 0, 0, 0.2);
-    border-radius: 10px;
+  border: none !important;
+  background: white !important;
+  box-shadow: 0 8px 32px rgba(17, 24, 39, 0.08),
+    0 1px 3px rgba(17, 24, 39, 0.04) !important;
+  border-radius: 20px !important;
+  width: min(94vw, 1400px);
+  max-width: none;
+  margin: 1.5rem auto !important;
+  padding: 3rem 3.5rem !important;
+}
+
+.verbello-slogan {
+  font-size: 2rem;
+  font-weight: 800;
+  background: linear-gradient(90deg, #6366f1, #8b5cf6);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent;
+  letter-spacing: -0.015em;
+  line-height: 1.2;
+  margin-bottom: 0.5rem;
+}
+
+.verbello-intro .card-text {
+  font-size: 1.02rem;
+  font-weight: 400;
+  color: #4b5563;
+  line-height: 1.6;
+  margin-top: 1rem;
+}
+
+.verbello-intro .card-title {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #6366f1;
+  margin-top: 0.75rem;
+}
+
+.verbello-intro .img-fluid {
+  border-radius: 12px;
+}
+
+@media (max-width: 768px) {
+  .verbello-intro {
+    padding: 1.5rem !important;
+  }
+  .verbello-slogan {
+    font-size: 1.5rem;
+  }
+  .verbello-intro .card-text {
+    font-size: 0.95rem;
+  }
 }

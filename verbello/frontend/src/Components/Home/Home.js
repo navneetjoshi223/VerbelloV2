@@ -56,7 +56,7 @@ const [userData,setUserData]=useState({})
       {userFullName ? (
         <Userprofile userData={userData}/>
       ) : (
-        <>
+        <div className="home-page-bg">
           <IntroCard />
           <div className="card languages-offered m-3 p-3">
             <div className="card-body">
@@ -82,7 +82,7 @@ const [userData,setUserData]=useState({})
             </div>
           </div>
           <Carousel />
-        </>
+        </div>
       )}
 
       <Footer />
