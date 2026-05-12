@@ -18,10 +18,10 @@ const qnaSchema = new Schema(
   }
 );
 
-const French = mongoose.model("FrenchQuiz", qnaSchema,"FrenchQuiz");
-const Spanish = mongoose.model("SpanishQuiz", qnaSchema,"SpanishQuiz");
-const German = mongoose.model("GermanQuiz", qnaSchema,"GermanQuiz");
-const Italian = mongoose.model("ItalianQuiz", qnaSchema,"ItalianQuiz");
-const Portuguese = mongoose.model("PortugueseQuiz", qnaSchema,"PortugueseQuiz");
+const QuizFrench = mongoose.model("FrenchQuiz", qnaSchema,"FrenchQuiz");
+const QuizSpanish = mongoose.model("SpanishQuiz", qnaSchema,"SpanishQuiz");
+const QuizGerman = mongoose.model("GermanQuiz", qnaSchema,"GermanQuiz");
+const QuizItalian = mongoose.model("ItalianQuiz", qnaSchema,"ItalianQuiz");
+const QuizPortuguese = mongoose.model("PortugueseQuiz", qnaSchema,"PortugueseQuiz");
 
-module.exports = {French,Spanish,German, Italian, Portuguese};
+module.exports = {QuizFrench,QuizSpanish,QuizGerman, QuizItalian, QuizPortuguese};

@@ -1,4 +1,4 @@
-const { French, Spanish, German, Italian, Portuguese } = require("../models/QnA");
+const { QuizFrench, QuizSpanish, QuizGerman, QuizItalian, QuizPortuguese } = require("../models/QnA");
 const { LessonSpanish, LessonFrench, LessonGerman, LessonItalian, LessonPortuguese} = require("../models/LessonsModel");
 
 
@@ -6,19 +6,19 @@ const { LessonSpanish, LessonFrench, LessonGerman, LessonItalian, LessonPortugue
 // conflicts with Mongoose schema syntax, so we skip hydration to Mongoose documents and return plain JavaScript objects instead.
 async function getQuizData(language,lesson) {
     if(language==="Spanish"){
-        return Spanish.find({ lesson:lesson }).lean();
+        return QuizSpanish.find({ lesson:lesson }).lean();
     }
     else if(language==="French"){
-        return French.find({ lesson:lesson }).lean();
+        return QuizFrench.find({ lesson:lesson }).lean();
     }
     else if(language==="German"){
-        return German.find({ lesson:lesson }).lean();
+        return QuizGerman.find({ lesson:lesson }).lean();
     }
     else if(language==="Italian"){
-        return Italian.find({ lesson:lesson }).lean();
+        return QuizItalian.find({ lesson:lesson }).lean();
     }
     else if(language === "Portuguese") {
-        return Portuguese.find({ lesson: lesson }).lean();
+        return QuizPortuguese.find({ lesson: lesson }).lean();
     }
     else{
         throw new Error('Language not found');
