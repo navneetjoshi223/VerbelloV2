@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import axios from "axios";
 //import { useLocation } from "react-router-dom";
 
@@ -81,28 +81,45 @@ const QuizQuestions = (props) => {
     setIsAnsweredCorrectly(isCorrect);
   };
 
-  const handleNextClick = () => {
-    if (selectedOption !== null) {
+  const handleNextClick = useCallback(() => {
+    if (selectedOption !== null && isAnsweredCorrectly) {
       if (selectedOption === questions[currentQuestion].correctAnswer) {
         setScore(score + 1);
-        //setShowCorrectAnswer(true);
       }
 
       if (currentQuestion < questions.length - 1) {
         setCurrentQuestion(currentQuestion + 1);
         setSelectedOption(null);
-        //setShowCorrectAnswer(false);
-
-        // Clear the class styling for the options
-        const optionElements = document.querySelectorAll(".option");
-        optionElements.forEach((element) => {
-          element.classList.remove("selected", "correct", "incorrect");
-        });
         setIsAnsweredCorrectly(false);
       } else {
         handleCompleteQuiz();
       }
     }
+  }, [selectedOption, isAnsweredCorrectly, currentQuestion, questions, score]);
+
+  useEffect(() => {
+    const handleKeyDown = (e) => {
+      if (isQuizCompleted || !questions.length) return;
+      const numKey = parseInt(e.key, 10);
+      if (numKey >= 1 && numKey <= 4) {
+        const optionIndex = numKey - 1;
+        if (optionIndex < (questions[currentQuestion]?.options?.length || 0)) {
+          handleOptionClick(optionIndex);
+        }
+      } else if (e.key === "Enter" && isAnsweredCorrectly) {
+        handleNextClick();
+      }
+    };
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, [currentQuestion, questions, isAnsweredCorrectly, isQuizCompleted, handleNextClick]);
+
+  const getOptionClass = (index) => {
+    if (selectedOption === null) return "option";
+    if (selectedOption === index) {
+      return isAnsweredCorrectly ? "option correct" : "option incorrect";
+    }
+    return "option";
   };
 
   const renderOptions = () => {
@@ -111,16 +128,11 @@ const QuizQuestions = (props) => {
       questions[currentQuestion].options?.map((option, index) => (
         <div
           key={index}
-          className={`option m-2 ${
-            selectedOption === index
-              ? isAnsweredCorrectly
-                ? "correct"
-                : "incorrect"
-              : "null"
-          }`}
+          className={getOptionClass(index)}
           onClick={() => handleOptionClick(index)}
         >
-          {option}
+          <span className="option-key">{index + 1}</span>
+          <span>{option}</span>
         </div>
       ))
     );
@@ -149,80 +161,87 @@ const QuizQuestions = (props) => {
     //make api call to user and update lessons completed info
   
 
+  const progressPercent = questions.length
+    ? ((currentQuestion + (isAnsweredCorrectly ? 1 : 0)) / questions.length) * 100
+    : 0;
+
   return (
     <>
       <Navbar />
-      {questions.length > 0 &&
-        (isQuizCompleted ? (
-          <>
-            <div className="d-flex align-items-center mx-auto">
+      <div className="quiz-page">
+        {questions.length > 0 &&
+          (isQuizCompleted ? (
+            <div className="quiz-completion">
               <img
                 src="/images/mascot/pingu-speaking.jpeg"
                 alt="Mascot congratulating."
-                className="mascot-speaking"
+                className="quiz-completion-mascot"
               />
-              <div className="text-center p-5">
-                <h2 className="mb-4">Kudos! You've done Amazing!</h2>
-                <button
-               className="btn btn-outline-primary btn-lg"
-               onClick={() => handleGoToProfile('LessonNameToUpdate')}
-               
-               >
-                  Go to Profile 
-                </button>
-              </div>
+              <h2>Kudos! You've done amazing!</h2>
+              <p>
+                You completed the {lessonName} quiz in {language}.
+              </p>
+              <button
+                className="quiz-btn quiz-btn-primary"
+                onClick={() => handleGoToProfile("LessonNameToUpdate")}
+              >
+                Go to Profile
+              </button>
             </div>
-          </>
-        ) : (
-          <>
-            {selectedOption !== null ? (
-              isAnsweredCorrectly ? (
-                <div className="alert alert-success mx-auto mt-2" role="alert">
-                  Great job!
+          ) : (
+            <>
+              <div className="quiz-progress-wrapper">
+                <div className="quiz-progress-label">
+                  <span>{lessonName}</span>
+                  <span>
+                    {currentQuestion + 1} / {questions.length}
+                  </span>
                 </div>
-              ) : (
-                <div className="alert alert-danger mx-auto mt-2" role="alert">
-                  Incorrect answer! Please try again.
-                </div>
-              )
-            ) : null}
-
-            <h4 className="p-3">Quiz: {lessonName}</h4>
-
-            <div className="row">
-              <div className="quiz-container card m-5 mx-auto">
-                <div className="card-body">
-                  <div className="question font-weight-bold">
-                    Question {currentQuestion + 1} of {questions.length}
-                  </div>
-                  <div className="question-and-options">
-                    <div className="question-text">
-                      {questions[currentQuestion].question}
-                    </div>
-                    <div className="options">{renderOptions()}</div>
-                  </div>
-                  {currentQuestion < questions.length - 1 ? (
-                    <button
-                      onClick={handleNextClick}
-                      className="btn btn-primary m-2 mt-4"
-                      disabled={!isAnsweredCorrectly}
-                    >
-                      Next
-                    </button>
-                  ) : (
-                    <button
-                      onClick={handleCompleteQuiz}
-                      className="btn btn-success mt-3"
-                      disabled={!isAnsweredCorrectly}
-                    >
-                      Complete Quiz
-                    </button>
-                  )}
+                <div className="quiz-progress-track">
+                  <div
+                    className="quiz-progress-fill"
+                    style={{ width: `${progressPercent}%` }}
+                  />
                 </div>
               </div>
-            </div>
-          </>
-        ))}
+
+              <div className="quiz-container">
+                <div className="question-card-content" key={currentQuestion}>
+                  <div className="question-counter">
+                    Question {currentQuestion + 1}
+                  </div>
+                  <div className="question">
+                    {questions[currentQuestion].question}
+                  </div>
+                  <div className="options">{renderOptions()}</div>
+                  <div className="quiz-actions">
+                    <span className="quiz-hint">
+                      Tip: press <kbd>1</kbd>–<kbd>4</kbd> to pick,{" "}
+                      <kbd>Enter</kbd> to continue
+                    </span>
+                    {currentQuestion < questions.length - 1 ? (
+                      <button
+                        onClick={handleNextClick}
+                        className="quiz-btn quiz-btn-primary"
+                        disabled={!isAnsweredCorrectly}
+                      >
+                        Next →
+                      </button>
+                    ) : (
+                      <button
+                        onClick={handleCompleteQuiz}
+                        className="quiz-btn quiz-btn-success"
+                        disabled={!isAnsweredCorrectly}
+                      >
+                        Complete Quiz
+                      </button>
+                    )}
+                  </div>
+                </div>
+              </div>
+            </>
+          ))}
+      </div>
       <audio ref={correctAnswerAudioRef}>
         <source src="/media/success-correct-answer.mp3" type="audio/mpeg" />
         Your browser does not support the audio element.
