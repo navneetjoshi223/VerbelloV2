@@ -1,21 +1,89 @@
+/* UnitLesson.css — lesson row card styling */
+
 .lesson-item {
-    cursor: pointer;
-    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+  display: flex;
+  align-items: center;
+  padding: 0.85rem 1.25rem;
+  background: white;
+  border-radius: 12px;
+  border: 1px solid #e5e7eb;
+  box-shadow: 0 1px 3px rgba(17, 24, 39, 0.04);
+  cursor: pointer;
+  width: 100%;
+  margin-bottom: 0;
+  transition: transform 0.22s cubic-bezier(0.4, 0, 0.2, 1),
+    box-shadow 0.22s ease, border-color 0.22s ease, background 0.22s ease;
+}
+
+.lesson-item > div {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  width: 100%;
 }
 
 .lesson-item:hover {
-    transform: scale(1.05);
+  transform: translateX(4px);
+  border-color: #6366f1;
+  background: #fafaff;
+  box-shadow: 0 6px 18px rgba(99, 102, 241, 0.16);
 }
 
+.lesson-item span {
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: #111827;
+  letter-spacing: -0.005em;
+}
+
+.fixed-image {
+  width: 48px !important;
+  height: 48px !important;
+  object-fit: contain;
+  flex-shrink: 0;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.12));
+  transition: transform 0.22s ease;
+}
+
+.lesson-item:hover .fixed-image {
+  transform: scale(1.08) rotate(-5deg);
+}
+
+/* Locked / disabled state */
 .lesson-item.disabled {
-    cursor: not-allowed;
-    pointer-events: none;
-    opacity: 0.5;
-    background-color: rgba(0,0,0,0);
-    color: black;
+  cursor: not-allowed;
+  pointer-events: none;
+  opacity: 0.55;
+  background: #fafafa;
+  border-color: #f3f4f6;
+  box-shadow: none;
+  color: #9ca3af;
 }
 
 .lesson-item.disabled:hover {
-    transform: none;
-    box-shadow: none;
+  transform: none;
+  box-shadow: none;
+  background: #fafafa;
+  border-color: #f3f4f6;
+}
+
+.lesson-item.disabled span {
+  color: #9ca3af;
+}
+
+.lesson-item.disabled .fixed-image {
+  filter: grayscale(0.5) drop-shadow(0 1px 2px rgba(0, 0, 0, 0.05));
+}
+
+@media (max-width: 640px) {
+  .lesson-item {
+    padding: 0.7rem 1rem;
+  }
+  .lesson-item span {
+    font-size: 0.98rem;
+  }
+  .fixed-image {
+    width: 40px !important;
+    height: 40px !important;
+  }
 }

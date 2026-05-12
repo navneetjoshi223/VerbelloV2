@@ -7,6 +7,15 @@ import "./Lesson.css";
 import UnitLesson from "./UnitLesson";
 import LessonContent from "./LessonContent";
 
+const languageFlagMap = {
+  Spanish: "/images/flags/spain.jpeg",
+  French: "/images/flags/france.jpeg",
+  Italian: "/images/flags/italy.jpeg",
+  German: "/images/flags/germany.jpeg",
+  Portuguese: "/images/flags/portugal.jpeg",
+  Portugese: "/images/flags/portugal.jpeg",
+};
+
 function Lesson() {
   const [selectedLesson, setSelectedLesson] = useState(null);
   //const [donelesson, setdonelesson] = useState({});
@@ -534,6 +543,16 @@ function Lesson() {
     <>
       <Navbar />
       <div className="App">
+        {languageFlagMap[language] && (
+          <div className="language-context">
+            <img
+              src={languageFlagMap[language]}
+              alt={`${language} flag`}
+              className="language-context-flag"
+            />
+            <span className="language-context-label">Learning {language}</span>
+          </div>
+        )}
         <h2>Learn Units</h2>
         {selectedLesson ? (
           <LessonContent />
